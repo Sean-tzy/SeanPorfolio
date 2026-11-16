@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sean | Personal Profile</title>
+  <link href="theme.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #212529; }
+    section { padding: 70px 0; }
+    .section-title { text-align: center; margin-bottom: 40px; font-weight: bold; }
+    .section-title span { color: #0d6efd; }
+
+    #home {
+      background-color: #0d6efd;
+      color: #ffffff;
+      padding: 110px 0 80px 0;
+      text-align: center;
+    }
+    .avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      color: #0d6efd;
+      font-size: 64px; font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px auto;
+      border: 6px solid #cfe2ff;
+    }
+
+.avatar { overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card { transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .btn { transition: transform 0.2s; }
+    .btn:hover { transform: scale(1.05); }
+    .nav-link:hover { color: #ffc107 !important; }
+
+    .bg-soft { background-color: #f1f5fb; }
+    footer { background-color: #212529; color: #ffffff; padding: 25px 0; text-align: center; }
+
+    /* ---------- CSS Media Queries ---------- */
+    /* Tablets */
+    @media (max-width: 992px) {
+      section { padding: 55px 0; }
+      #home { padding: 90px 0 60px 0; }
+    }
+    /* Phones */
+    @media (max-width: 576px) {
+      section { padding: 40px 0; }
+      #home h1 { font-size: 1.8rem; }
+      .avatar { width: 120px; height: 120px; font-size: 48px; }
+      .section-title { font-size: 1.5rem; }
+    }
+    /* Large screens */
+    @media (min-width: 1400px) {
+      #home h1 { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">Sean</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HOME / HERO ================= -->
+  <header id="home">
+    <div class="container">
+      <!-- EDIT: replace the letter with an <img> of yourself if you want -->
+      <div class="avatar"><img src="img/PROFILE.jpg" alt="Sean"></div>
+      <h1 class="fw-bold">Hi, I'm Sean</h1>
+      <p class="lead">Student &bull; Aspiring Cybersecurity Engineer &bull; Cybersecurity</p>
+      <a href="#about" class="btn btn-warning btn-lg me-2 mb-2">About Me</a>
+      <a href="#contact" class="btn btn-outline-light btn-lg mb-2">Contact Me</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About <span>Me</span></h2>
+      <div class="row g-4">
+        <div class="col-md-7">
+          <h4>Who am I?</h4>
+          <p>
+            I am a college student who enjoys learning about technology, cybersecurity, and music.
+            I like building simple websites, solving problems, and learning new things
+            every day. I believe that hard work and consistency lead to success.
+          </p>
+          <p>
+            My goal is to become a skilled professional who can help others and
+            contribute to my community.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-header bg-primary text-white">Quick Facts</div>
+            <ul class="list-group list-group-flush">
+              <!-- EDIT: replace each value with your real info -->
+              <li class="list-group-item"><strong>Full Name:</strong> Sean Jhanz D. Nisperos</li>
+              <li class="list-group-item"><strong>Age:</strong> 20 yrs old </li>
+              <li class="list-group-item"><strong>Birthday:</strong> 07/16/06 </li>
+              <li class="list-group-item"><strong>Address:</strong> Bacolod City, Philippines</li>
+              <li class="list-group-item"><strong>Email:</strong> seanjhanz111@gmail.com</li>
+              <li class="list-group-item"><strong>Languages:</strong> Filipino, English</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="bg-soft">
+    <div class="container">
+      <h2 class="section-title">My <span>Education</span></h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">College</h5>
+              <h6 class="card-subtitle mb-2 text-muted">National University Bacolod / Computer Science</h6>
+              <p class="card-text">2024 - Present</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Senior High School</h5>
+              <h6 class="card-subtitle mb-2 text-muted">La Consolacion College Bacolod / STEM</h6>
+              <p class="card-text">2022 - 2024</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Junior High School</h5>
+              <h6 class="card-subtitle mb-2 text-muted">San Sebastian International School</h6>
+              <p class="card-text">2019 - 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h5>Cybersecurity Skills</h5>
+          <p class="mb-1">Ethical Hacking</p>
+          <div class="progress mb-3"><div class="progress-bar bg-danger" style="width: 70%">45%</div></div>
+          <p class="mb-1">Penetration Testing</p>
+          <div class="progress mb-3"><div class="progress-bar bg-dark" style="width: 65%">55%</div></div>
+          <p class="mb-1">Network Security</p>
+          <div class="progress mb-3"><div class="progress-bar bg-success" style="width: 60%">40%</div></div>
+          <p class="mb-1">Linux Administration</p>
+          <div class="progress mb-3"><div class="progress-bar bg-info" style="width: 80%">75%</div></div>
+          <p class="mb-1">Web Development (HTML, CSS, Bootstrap)</p>
+          <div class="progress mb-3"><div class="progress-bar" style="width: 75%">70%</div></div>
+        </div>
+        <div class="col-md-6">
+          <h5>Operating Systems</h5>
+          <span class="badge bg-primary fs-6 m-1">Kali Linux</span>
+          <span class="badge bg-info text-dark fs-6 m-1">Arch Linux</span>
+          <span class="badge bg-dark fs-6 m-1">BlackArch</span>
+
+          <h5 class="mt-4">Security Focus Areas</h5>
+          <span class="badge bg-danger fs-6 m-1">Ethical Hacking</span>
+          <span class="badge bg-danger fs-6 m-1">Penetration Testing</span>
+          <span class="badge bg-success fs-6 m-1">Network Security</span>
+          <span class="badge bg-warning text-dark fs-6 m-1">Vulnerability Assessment</span>
+          <span class="badge bg-secondary fs-6 m-1">Web Application Security</span>
+          <span class="badge bg-secondary fs-6 m-1">Digital Forensics</span>
+          <span class="badge bg-primary fs-6 m-1">CTF Challenges</span>
+
+          <h5 class="mt-4">Web Development</h5>
+          <span class="badge bg-success fs-6 m-1">HTML</span>
+          <span class="badge bg-success fs-6 m-1">CSS</span>
+          <span class="badge bg-success fs-6 m-1">Bootstrap</span>
+          <span class="badge bg-success fs-6 m-1">JavaScript</span>
+
+          <h5 class="mt-4">Soft Skills</h5>
+          <span class="badge bg-primary fs-6 m-1">Communication</span>
+          <span class="badge bg-success fs-6 m-1">Teamwork</span>
+          <span class="badge bg-danger fs-6 m-1">Problem Solving</span>
+          <span class="badge bg-warning text-dark fs-6 m-1">Time Management</span>
+          <span class="badge bg-info text-dark fs-6 m-1">Adaptability</span>
+          <span class="badge bg-secondary fs-6 m-1">Creativity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- ================= EXPERIENCE (Accordion = interactive) ================= -->
+  <section id="experience" class="bg-soft">
+    <div class="container">
+      <h2 class="section-title">My <span>Experience</span></h2>
+      <div class="accordion" id="expAccordion">
+        <!-- EDIT: replace with your real experience, org memberships, awards, etc. -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#exp1">
+              Scholarships &amp; Trainings
+            </button>
+          </h2>
+          <div id="exp1" class="accordion-collapse collapse show" data-bs-parent="#expAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li><strong>TESDA Scholar</strong></li>
+                <li><strong>DICT Scholar</strong></li>
+                <li>Expert-led Cyber Security Trainings</li>
+                <li>Web Development NC III training</li>
+                <li>Ethical Hacking Seminar (80 hours), The Fence Defense Training Services Incorporated &ndash; Certificate of Completion</li>
+                <li>Resource Speaker, "Cybersecurity Awareness: Protecting the Digital World," Computer Science Department, NU Bacolod (August 8, 2026)</li>
+              </ul>
+              <a href="img/CYBERSECURITY.jpg" target="_blank">
+                <img src="img/CYBERSECURITY.jpg" class="img-fluid rounded border" style="max-width: 360px;"
+                     alt="Sean holding a Certificate of Appreciation beside the resource speaker, in front of a screen listing Expert-led Cyber Security Trainings and Web Development NC III">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exp2">
+              Organizations &amp; Leadership
+            </button>
+          </h2>
+          <div id="exp2" class="accordion-collapse collapse" data-bs-parent="#expAccordion">
+            <div class="accordion-body">
+              <p><strong>Organization:</strong> Former Photojournalist, Historia de National</p>
+              <p class="mb-0"><strong>Leadership:</strong> Head of the Media Mavericks, Computer Science Department</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exp3">
+              Awards &amp; Achievements
+            </button>
+          </h2>
+          <div id="exp3" class="accordion-collapse collapse" data-bs-parent="#expAccordion">
+            <div class="accordion-body">
+              <ul>
+                <li><strong>KP TV Film</strong> &ndash; 1st Runner-Up</li>
+                <li><strong>Robotics Champion</strong> &ndash; Champion</li>
+                <li><strong>Game Development</strong> &ndash; 1st Runner-Up</li>
+                <li><strong>NU Advertisement</strong> (School Teaser &ndash; Advertisement Competition, SECA Days 2026) &ndash; 1st Runner-Up</li>
+              </ul>
+
+              <h6 class="mt-4">Certificates &amp; Photos</h6>
+              <div class="row g-3">
+                <div class="col-6 col-md-4">
+                  <a href="img/ETHICALHACKING.jpg" target="_blank">
+                    <img src="img/ETHICALHACKING.jpg" class="img-fluid rounded border"
+                         alt="Certificate of completion for Ethical Hacking (80 hours) presented to Sean Jhanz D. Nisperos">
+                  </a>
+                  <small class="d-block text-muted">Ethical Hacking (80 hours)</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/SPEAKER1.jpg" target="_blank">
+                    <img src="img/SPEAKER1.jpg" class="img-fluid rounded border"
+                         alt="Certificate of Appreciation to Sean Jhanz D. Nisperos as Resource Speaker for the Cybersecurity Awareness seminar-workshop">
+                  </a>
+                  <small class="d-block text-muted">Resource Speaker, Cybersecurity Awareness</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/SPEAKER2.jpg" target="_blank">
+                    <img src="img/SPEAKER2.jpg" class="img-fluid rounded border"
+                         alt="Sean as Resource Speaker at the Cybersecurity Awareness seminar-workshop">
+                  </a>
+                  <small class="d-block text-muted">Resource Speaker, Cybersecurity Awareness (photo)</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/NU1.jpg" target="_blank">
+                    <img src="img/NU1.jpg" class="img-fluid rounded border"
+                         alt="Certificate of Recognition to the Computer Science Department for 1st runner-up in the SECA Days 2026 School Teaser Advertisement Competition">
+                  </a>
+                  <small class="d-block text-muted">NU Advertisement &ndash; 1st Runner-Up</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/KPTV.jpg" target="_blank">
+                    <img src="img/KPTV.jpg" class="img-fluid rounded border"
+                         alt="Team holding a 1st runner-up trophy and check at the Barangay Excellence in Action event, Bacolod City Government Center">
+                  </a>
+                  <small class="d-block text-muted">KP TV Film &ndash; 1st Runner-Up</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/ROBOTICS.jpg" target="_blank">
+                    <img src="img/ROBOTICS.jpg" class="img-fluid rounded border"
+                         alt="Group of students at the Snap, Build, Bot robot-building event, some holding small robots">
+                  </a>
+                  <small class="d-block text-muted">Robotics</small>
+                </div>
+                <div class="col-6 col-md-4">
+                  <a href="img/GAMEDEV.jpg" target="_blank">
+                    <img src="img/GAMEDEV.jpg" class="img-fluid rounded border"
+                         alt="Unity editor on a monitor showing a 2D platformer game scene">
+                  </a>
+                  <small class="d-block text-muted">Game Development</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span>Projects</span></h2>
+      <div class="row g-4">
+        <!-- EDIT: add your GitHub link in the last card -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Honeypot</h5>
+              <p class="card-text">A cybersecurity project that sets up a honeypot, a decoy system used to attract attackers and study their behavior.</p>
+              <span class="badge bg-danger">Cybersecurity</span>
+              <span class="badge bg-dark">Linux</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Anyag Resorts Website</h5>
+              <p class="card-text">A website I created for Anyag Resorts.</p>
+              <span class="badge bg-primary">HTML</span>
+              <span class="badge bg-success">CSS</span>
+              <span class="badge bg-info text-dark">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">City Harvest Church Bacolod Website</h5>
+              <p class="card-text">My first real client project: a website built for City Harvest Church in Bacolod.</p>
+              <span class="badge bg-warning text-dark">First Client</span>
+              <span class="badge bg-primary">Web Development</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Labs on GitHub</h5>
+              <p class="card-text">My cybersecurity and web development labs, documented and uploaded to my GitHub repositories.</p>
+              <a href="https://github.com/Sean-tzy" class="btn btn-dark btn-sm" target="_blank">View GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERESTS ================= -->
+  <section id="interests" class="bg-soft">
+    <div class="container">
+      <h2 class="section-title">My <span>Interests</span></h2>
+      <div class="row g-4 text-center">
+        <!-- EDIT: change to your hobbies -->
+        <div class="col-6 col-md-3">
+          <div class="card p-3"><h1>&#127925;</h1><h5>Music</h5><p>Recording and listening to songs.</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card p-3"><h1>&#127918;</h1><h5>Gaming</h5><p>Playing mobile and PC games.</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card p-3"><h1>&#128187;</h1><h5>Coding</h5><p>Building websites and apps.</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card p-3"><h1>&#128214;</h1><h5>Reading</h5><p>Learning law and new topics.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact <span>Me</span></h2>
+      <div class="row g-4">
+        <div class="col-md-5">
+          <h5>Get in touch</h5>
+          <p><strong>Email:</strong> seanjhanz111@gmail.com</p>
+          <p><strong>Phone:</strong> 09939322645</p>
+          <p><strong>Location:</strong> Bacolod City, Philippines</p>
+          <!-- EDIT: add your real social media links -->
+          <a href="https://www.facebook.com/seanjhanz0716" class="btn btn-primary btn-sm me-1">Facebook</a>
+          <a href="https://github.com/Sean-tzy" class="btn btn-dark btn-sm me-1">GitHub</a>
+        </div>
+        <div class="col-md-7">
+          <!-- Basic form: opens the visitor's email app -->
+          <form action="mailto:seanjhanz111@gmail.com" method="post" enctype="text/plain">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p class="mb-1">&copy; 2026 Sean. All rights reserved.</p>
+    <a href="#home" class="text-warning">Back to top</a>
+  </footer>
+
+  <!-- Bootstrap JS (needed for the menu button and accordion) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

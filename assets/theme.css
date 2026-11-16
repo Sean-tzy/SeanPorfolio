@@ -1,0 +1,189 @@
+/* ================================================
+   Minimal warm theme: cream, white, gray, charcoal
+   Load AFTER Bootstrap and your <style> block.
+   ================================================ */
+
+:root {
+  --cream:      #faf6ef;  /* page background */
+  --cream-soft: #f1eadd;  /* alternate sections */
+  --paper:      #fffdf9;  /* cards, inputs */
+  --sand:       #e3d8c4;  /* light accents */
+  --line:       #e6ddcd;  /* borders */
+  --stone:      #a39a8e;  /* mid gray */
+  --taupe:      #6b625a;  /* muted text */
+  --charcoal:   #3a3632;  /* buttons, accents */
+  --ink:        #2b2825;  /* text, navbar, footer */
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+}
+
+::selection { background: var(--sand); color: var(--ink); }
+
+/* ---------- Headings ---------- */
+.section-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+.section-title span { color: var(--stone); }
+h4, h5, h6, .card-title { color: var(--ink); }
+.text-muted { color: var(--taupe) !important; }
+
+/* ---------- Navbar & footer ---------- */
+.bg-dark.navbar,
+nav.bg-dark { background-color: var(--ink) !important; }
+.navbar-brand { letter-spacing: 1px; }
+.nav-link:hover { color: var(--sand) !important; }
+footer { background-color: var(--ink); color: var(--sand); }
+footer .text-warning { color: var(--sand) !important; }
+
+/* ---------- Hero ---------- */
+#home {
+#home {
+  background-color: var(--ink);
+  color: #ffffff;
+  border-bottom: none;
+}
+#home .lead { color: #ffffff; }
+
+/* buttons that still show up on the dark hero */
+#home .btn-warning {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: var(--cream);
+  --bs-btn-border-color: var(--cream);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--sand);
+  --bs-btn-hover-border-color: var(--sand);
+}
+#home .btn-outline-light {
+  --bs-btn-color: #ffffff;
+  --bs-btn-border-color: #ffffff;
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-border-color: #ffffff;
+}
+
+/* ---------- Sections ---------- */
+.bg-soft { background-color: var(--cream-soft); }
+
+/* ---------- Cards ---------- */
+.card {
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.card:hover { box-shadow: 0 10px 25px rgba(60, 50, 40, 0.12); }
+.card-header.bg-primary {
+  background-color: var(--charcoal) !important;
+  color: var(--cream) !important;
+  border-bottom: none;
+}
+.list-group-item {
+  background-color: var(--paper);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* ---------- Buttons (pill shaped, soft) ---------- */
+.btn { border-radius: 999px; }
+
+.btn-warning,
+.btn-primary,
+.btn-dark,
+.btn-info {
+  --bs-btn-color: var(--cream);
+  --bs-btn-bg: var(--charcoal);
+  --bs-btn-border-color: var(--charcoal);
+  --bs-btn-hover-color: var(--cream);
+  --bs-btn-hover-bg: var(--ink);
+  --bs-btn-hover-border-color: var(--ink);
+  --bs-btn-active-color: var(--cream);
+  --bs-btn-active-bg: var(--ink);
+  --bs-btn-active-border-color: var(--ink);
+  --bs-btn-focus-shadow-rgb: 163, 154, 142;
+}
+.btn-info { color: var(--cream) !important; }
+
+.btn-outline-light {
+  --bs-btn-color: var(--charcoal);
+  --bs-btn-border-color: var(--charcoal);
+  --bs-btn-hover-color: var(--cream);
+  --bs-btn-hover-bg: var(--charcoal);
+  --bs-btn-hover-border-color: var(--charcoal);
+  --bs-btn-active-color: var(--cream);
+  --bs-btn-active-bg: var(--ink);
+  --bs-btn-active-border-color: var(--ink);
+}
+
+/* ---------- Badges: only three soft tones ---------- */
+.badge { border-radius: 999px; font-weight: 500; padding: 0.45em 0.9em; }
+
+/* dark tones */
+.badge.bg-primary, .badge.bg-danger, .badge.bg-dark {
+  background-color: var(--charcoal) !important;
+  color: var(--cream) !important;
+}
+/* gray tones */
+.badge.bg-success, .badge.bg-secondary {
+  background-color: var(--stone) !important;
+  color: var(--paper) !important;
+}
+/* sand tones */
+.badge.bg-info, .badge.bg-warning {
+  background-color: var(--sand) !important;
+  color: var(--ink) !important;
+}
+
+/* ---------- Progress bars: one calm color ---------- */
+.progress {
+  background-color: var(--line);
+  border-radius: 999px;
+  height: 1.1rem;
+}
+.progress-bar,
+.progress-bar.bg-danger,
+.progress-bar.bg-dark,
+.progress-bar.bg-success,
+.progress-bar.bg-info {
+  background-color: var(--charcoal) !important;
+  color: var(--cream);
+  font-size: 0.7rem;
+}
+
+/* ---------- Accordion ---------- */
+.accordion-item {
+  background-color: var(--paper);
+  border-color: var(--line);
+}
+.accordion-button {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+.accordion-button:not(.collapsed) {
+  background-color: var(--cream-soft);
+  color: var(--ink);
+  box-shadow: none;
+}
+.accordion-button:focus {
+  border-color: var(--stone);
+  box-shadow: 0 0 0 0.2rem rgba(163, 154, 142, 0.25);
+}
+
+/* ---------- Images & forms ---------- */
+.img-fluid.border { border-color: var(--line) !important; }
+
+.form-control {
+  background-color: var(--paper);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.form-control:focus {
+  background-color: var(--paper);
+  border-color: var(--stone);
+  box-shadow: 0 0 0 0.2rem rgba(163, 154, 142, 0.25);
+}
+}
