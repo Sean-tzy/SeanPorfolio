@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' role='img' aria-label='SEAN'>
+  <rect width='64' height='64' rx='16' fill='#102820'/>
+  <path d='M43 20c-3-4-8-6-13-6-7 0-12 3-12 8 0 6 6 8 14 10s14 4 14 10c0 6-6 9-14 9-7 0-13-3-16-8' fill='none' stroke='#f3ebdd' stroke-width='5' stroke-linecap='round'/>
+  <path d='m32 9 2.2 6.8L41 18l-6.8 2.2L32 27l-2.2-6.8L23 18l6.8-2.2Z' fill='#c5a66a'/>
+  <circle cx='49' cy='13' r='3' fill='#ffe8a6'/>
+</svg>
