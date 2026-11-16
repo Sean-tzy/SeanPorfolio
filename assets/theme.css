@@ -1,7 +1,3 @@
-/* ================================================
-   Minimal warm theme: cream, white, gray, charcoal
-   Load AFTER Bootstrap and your <style> block.
-   ================================================ */
 
 :root {
   --cream:      #faf6ef;  /* page background */
