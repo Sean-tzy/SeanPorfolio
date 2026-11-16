@@ -88,7 +88,6 @@
     }
 
     const media = window.gsap.matchMedia();
-    let timeline = null;
 
     media.add({
       reduceMotion: "(prefers-reduced-motion: reduce)",
@@ -99,7 +98,7 @@
         return;
       }
 
-      timeline = window.gsap.timeline({
+      const timeline = window.gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top 82%",
@@ -110,7 +109,7 @@
         }
       });
       chapterTimelines.set(chapterId, timeline);
-      buildTimeline({
+      const cleanupBuilder = buildTimeline({
         timeline,
         section,
         conditions: context.conditions,
@@ -118,14 +117,14 @@
       });
 
       return () => {
-        if (timeline) {
-          if (timeline.scrollTrigger) {
-            timeline.scrollTrigger.kill();
-          }
-          timeline.kill();
-          chapterTimelines.delete(chapterId);
-          timeline = null;
+        if (typeof cleanupBuilder === "function") {
+          cleanupBuilder();
         }
+        if (timeline.scrollTrigger) {
+          timeline.scrollTrigger.kill();
+        }
+        timeline.kill();
+        chapterTimelines.delete(chapterId);
       };
     });
 
@@ -150,6 +149,58 @@
       window.bootstrap.Collapse.getOrCreateInstance(navMenu).hide();
     });
   });
+
+  if (window.gsap && window.ScrollTrigger) {
+    const villageWorld = document.getElementById("villageWorld");
+    const villageHouse = document.querySelector(".village-house");
+    const villageBook = document.querySelector(".village-book-reveal");
+    const identityBook = document.getElementById("identityBook");
+
+    if (!villageWorld || !villageHouse || !villageBook || !identityBook) {
+      throw new Error("HIRAYA chapter animations are missing required scene elements.");
+    }
+
+    registerChapterAnimation("01", ({ timeline }) => {
+      timeline.to(villageWorld, {
+        scale: 1.16,
+        transformOrigin: "50% 58%",
+        ease: "none"
+      }, 0);
+      timeline.to(villageHouse, {
+        y: -12,
+        scale: 1.04,
+        transformOrigin: "center bottom",
+        ease: "none"
+      }, 0);
+      timeline.to(villageBook, {
+        y: -16,
+        scale: 1.04,
+        ease: "none"
+      }, 0.3);
+    });
+
+    registerChapterAnimation("02", ({ timeline, section }) => {
+      const cover = section.querySelector(".storybook-cover");
+      const pageTurns = Array.from(section.querySelectorAll(".storybook-page-turn"));
+      if (!cover || pageTurns.length !== 3) {
+        throw new Error("HIRAYA storybook animation is missing its cover or page turns.");
+      }
+
+      section.classList.add("storybook-motion-ready");
+      timeline.fromTo(cover, { rotateY: 0 }, {
+        rotateY: -155,
+        ease: "none"
+      }, 0);
+      pageTurns.forEach((pageTurn, index) => {
+        timeline.fromTo(pageTurn, { rotateY: 0 }, {
+          rotateY: -155,
+          ease: "none"
+        }, 0.2 + index * 0.26);
+      });
+
+      return () => section.classList.remove("storybook-motion-ready");
+    });
+  }
 
   window.addEventListener("scroll", scheduleScrollStateUpdate, { passive: true });
   window.addEventListener("resize", scheduleScrollStateUpdate, { passive: true });
