@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/theme.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
+  <link href="css/interactive.css" rel="stylesheet">
+  <link href="css/finale.css" rel="stylesheet">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
@@ -193,14 +195,14 @@
         <button type="button" class="book-control" id="bookScroll" aria-controls="identityBook">Follow the scroll <span aria-hidden="true">↓</span></button>
         <span id="bookStatus" role="status">Scroll to turn the pages, or open the whole story.</span>
       </div>
-      <div class="storybook" id="identityBook">
+      <div class="storybook" id="identityBook" data-interactive-book>
         <div class="storybook-left">
           <article class="storybook-left-page">
             <p class="storybook-page-label">A note to the reader</p>
             <h3>Before the first page</h3>
             <p>
-              I am a college student who enjoys learning about technology, cybersecurity, and music.
-              I like building simple websites, solving problems, and learning new things every day.
+              Away from coursework, I am an introvert who enjoys music, reading, and a cup of matcha.
+              My parents are my inspiration, and I believe in hard work and consistency.
             </p>
             <p>My goal is to become a skilled professional who can help others and contribute to my community.</p>
             <dl class="storybook-facts">
@@ -230,10 +232,10 @@
               <p class="storybook-page-label">Page 01 <span aria-hidden="true">·</span> Roots</p>
               <h3>Personal Background &amp; Life Story</h3>
               <p>
-                I am Sean Jhanz D. Nisperos, a third-year BS Computer Science student from Bacolod City.
-                My interests bring together technology, cybersecurity, music, and making things for the web.
+                My educational journey began at New Era Elementary School in Manila and continues in Bacolod,
+                where I study Computer Science. Beyond my studies, I enjoy music, gaming, and reading about law and new topics.
               </p>
-              <p class="story-placeholder"><strong>Personal detail to add:</strong> [Share a life experience that helped shape who you are.]</p>
+              <p class="personal-note"><strong>A little about me:</strong> I like matcha.</p>
             </div>
           </article>
 
@@ -242,10 +244,10 @@
             <div class="storybook-page-content">
               <p class="storybook-page-label">Page 02 <span aria-hidden="true">·</span> Character</p>
               <h3>Personality, Values &amp; Growth</h3>
-              <p><strong>Personality:</strong> <span class="story-placeholder">[Describe the qualities that feel most like you.]</span></p>
+              <p><strong>Personality:</strong> I am an introvert.</p>
               <p><strong>Values:</strong> I believe that hard work and consistency lead to success.</p>
               <p><strong>Strengths:</strong> I enjoy solving problems and learning new things.</p>
-              <p><strong>Weaknesses:</strong> <span class="story-placeholder">[Add an area you are working to improve.]</span></p>
+              <p><strong>Weakness:</strong> Her.</p>
             </div>
           </article>
 
@@ -255,7 +257,7 @@
               <p class="storybook-page-label">Page 03 <span aria-hidden="true">·</span> North Star</p>
               <h3>Motivation, Inspiration &amp; Philosophy</h3>
               <p><strong>Motivation:</strong> My goal is to become a skilled professional who can help others and contribute to my community.</p>
-              <p><strong>Inspiration:</strong> <span class="story-placeholder">[Name a person, experience, or idea that inspires you.]</span></p>
+              <p><strong>Inspiration:</strong> My parents.</p>
               <p><strong>Personal philosophy:</strong> Hard work and consistency are part of how I hope to move forward.</p>
             </div>
           </article>
@@ -268,7 +270,7 @@
     <div class="container">
       <p class="chapter-kicker chapter-kicker--dark">CHAPTER 03 <span aria-hidden="true">·</span> THE PATH OF KNOWLEDGE</p>
       <h2 class="section-title">A Path of <span>Learning</span></h2>
-      <p class="education-lede">Every stop along the way is part of a larger journey. Replace bracketed details with your own verified information.</p>
+      <p class="education-lede">From my first school in Manila to studying Computer Science in Bacolod, each step has given me something to build on.</p>
 
       <ol class="education-trail" aria-label="Five education milestones">
         <li class="education-card">
@@ -277,11 +279,10 @@
             <p class="education-card__eyebrow">The first steps</p>
             <h3>Elementary Education</h3>
             <dl class="education-facts">
-              <div><dt>School</dt><dd>[Add elementary school name]</dd></div>
-              <div><dt>Location</dt><dd>[Add city or municipality]</dd></div>
-              <div><dt>Academic year</dt><dd>[Add years attended]</dd></div>
+              <div><dt>School</dt><dd>New Era Elementary School</dd></div>
+              <div><dt>Location</dt><dd>Manila</dd></div>
+              <div><dt>Completed</dt><dd>2019</dd></div>
               <div><dt>Grade level</dt><dd>Elementary Education</dd></div>
-              <div><dt>Honors</dt><dd>[Add honors or recognitions, if any]</dd></div>
             </dl>
           </article>
         </li>
@@ -292,10 +293,8 @@
             <h3>Junior High School</h3>
             <dl class="education-facts">
               <div><dt>School</dt><dd>San Sebastian International School</dd></div>
-              <div><dt>Location</dt><dd>[Add city or municipality]</dd></div>
               <div><dt>Academic year</dt><dd>2019–2022</dd></div>
               <div><dt>Grade level</dt><dd>Junior High School</dd></div>
-              <div><dt>Honors</dt><dd>[Add honors or recognitions, if any]</dd></div>
             </dl>
           </article>
         </li>
@@ -309,7 +308,6 @@
               <div><dt>Location</dt><dd>Bacolod City, Philippines</dd></div>
               <div><dt>Academic year</dt><dd>2022–2024</dd></div>
               <div><dt>Strand</dt><dd>STEM</dd></div>
-              <div><dt>Honors</dt><dd>[Add honors or recognitions, if any]</dd></div>
             </dl>
           </article>
         </li>
@@ -322,8 +320,7 @@
               <div><dt>School</dt><dd>National University Bacolod</dd></div>
               <div><dt>Location</dt><dd>Bacolod City, Philippines</dd></div>
               <div><dt>Academic year</dt><dd>2024–Present</dd></div>
-              <div><dt>Program</dt><dd>BS Computer Science</dd></div>
-              <div><dt>Honors</dt><dd>[Add honors or recognitions, if any]</dd></div>
+              <div><dt>Program</dt><dd>BS Computer Science — Third Year</dd></div>
             </dl>
           </article>
         </li>
@@ -331,14 +328,13 @@
           <span class="education-card__marker" aria-hidden="true">05</span>
           <article class="education-card__panel">
             <p class="education-card__eyebrow">The journey continues</p>
-            <h3>BS Computer Science — Third Year</h3>
+            <h3>Recognition &amp; Continued Learning</h3>
             <dl class="education-facts">
-              <div><dt>School</dt><dd>National University Bacolod</dd></div>
-              <div><dt>Location</dt><dd>Bacolod City, Philippines</dd></div>
-              <div><dt>Academic year</dt><dd>[Confirm current academic year]</dd></div>
-              <div><dt>Program</dt><dd>BS Computer Science — Third Year</dd></div>
-              <div><dt>Honors</dt><dd>[Add honors or recognitions, if any]</dd></div>
+              <div><dt>Recognition</dt><dd>Resource Speaker, Cybersecurity Awareness — NU Bacolod, August 8, 2026</dd></div>
+              <div><dt>Training</dt><dd>Ethical Hacking Seminar, 80 hours — certificate dated June 28, 2026</dd></div>
+              <div><dt>Scholarships</dt><dd>TESDA Scholar; DICT Scholar</dd></div>
             </dl>
+            <button type="button" class="education-record-link" data-open-branch="achievements">View certificates &amp; training ↗</button>
           </article>
         </li>
       </ol>
@@ -393,38 +389,35 @@
         <section class="skills-panel" aria-labelledby="technicalSkillsTitle">
           <p class="skills-panel__eyebrow">Tools and subjects</p>
           <h3 id="technicalSkillsTitle">Technical Skills</h3>
+          <p class="skills-intro">Languages and tools I use and continue to learn through coursework and personal projects.</p>
           <div class="skill-groups">
             <div class="skill-group">
               <h4>Programming languages</h4>
-              <ul class="skill-tags"><li>JavaScript</li><li class="skill-placeholder">[Add other languages used]</li></ul>
+              <ul class="skill-tags"><li>Java</li><li>PHP</li><li>C++</li><li>JavaScript</li></ul>
             </div>
             <div class="skill-group">
               <h4>Web development</h4>
-              <ul class="skill-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap</li></ul>
+              <ul class="skill-tags"><li>HTML</li><li>CSS</li><li>Bootstrap</li></ul>
             </div>
             <div class="skill-group">
-              <h4>Databases</h4>
-              <ul class="skill-tags"><li class="skill-placeholder">[Add databases studied or used]</li></ul>
+              <h4>Local development &amp; containers</h4>
+              <ul class="skill-tags"><li>Laragon</li><li>XAMPP</li><li>Docker</li></ul>
             </div>
             <div class="skill-group">
               <h4>Networking</h4>
-              <ul class="skill-tags"><li class="skill-placeholder">[Add networking topics or tools]</li></ul>
-            </div>
-            <div class="skill-group">
-              <h4>Linux</h4>
-              <ul class="skill-tags"><li>Kali Linux</li><li>Arch Linux</li><li>BlackArch</li></ul>
+              <ul class="skill-tags"><li>Nmap</li></ul>
             </div>
             <div class="skill-group">
               <h4>Operating systems</h4>
-              <ul class="skill-tags"><li>Linux</li><li class="skill-placeholder">[Add other operating systems]</li></ul>
+              <ul class="skill-tags"><li>Linux</li><li>Windows</li></ul>
             </div>
             <div class="skill-group">
-              <h4>Cybersecurity fundamentals</h4>
+              <h4>Cybersecurity learning areas</h4>
               <ul class="skill-tags"><li>Defensive security</li><li>Digital forensics</li><li>Responsible research</li></ul>
             </div>
             <div class="skill-group">
               <h4>Development tools</h4>
-              <ul class="skill-tags"><li class="skill-placeholder">[Add tools you have used]</li></ul>
+              <ul class="skill-tags"><li>Git</li><li>GitHub</li><li>Browser developer tools</li></ul>
             </div>
           </div>
         </section>
@@ -588,39 +581,41 @@
         <div class="tree-branch-panels">
           <section id="treePanel-academic" class="tree-branch-panel" role="tabpanel" aria-labelledby="treeTab-academic" tabindex="0" hidden>
             <p class="tree-branch-panel__lede">Roots of study and practice.</p>
-            <p class="tree-empty-state">No academic project details are documented in the current portfolio. Add a verified project and its information here.</p>
+            <ul class="tree-leaf-list">
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="The Digital Me — Responsive Portfolio" data-description="An individual performance task for Application Development and Emerging Technologies: a responsive single-page portfolio presenting my identity, education, skills, work, and interests." data-technologies="HTML, CSS, JavaScript, Bootstrap, Flexbox, CSS Grid, CSS media queries, Canvas 2D with projected 3D geometry" data-contribution="Organized my portfolio content and developed the responsive chapter layout, page controls, project dialogs, interactive tree, and violin interface with AI-assisted implementation." data-problem="Present a personal digital identity in one accessible webpage that adapts to desktop, tablet, and mobile screens." data-lessons="The project applies responsive layouts, keyboard-accessible controls, reduced-motion alternatives, and rendering only when interactions require it." data-year="2026" data-role="Student developer — individual coursework" data-organization="Application Development and Emerging Technologies" data-image="assets/img/digital-me-preview.png" data-image-alt="Screenshot of the actual Digital Me portfolio introduction and portrait" data-image-caption="Preview of this portfolio, captured from the implemented webpage."><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>The Digital Me — Responsive Portfolio</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+            </ul>
           </section>
           <section id="treePanel-personal" class="tree-branch-panel" role="tabpanel" aria-labelledby="treeTab-personal" tabindex="0" hidden>
             <p class="tree-branch-panel__lede">Web projects already listed in the portfolio.</p>
             <ul class="tree-leaf-list">
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="Anyag Resorts Website" data-description="A website I created for Anyag Resorts." data-technologies="HTML, CSS, Bootstrap" data-contribution="[Add the pages or features you implemented.]" data-problem="[Describe the resort's need that the website addressed.]" data-lessons="[Add what you learned from this project.]"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>Anyag Resorts Website</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="City Harvest Church Bacolod Website" data-description="My first real client project: a website built for City Harvest Church in Bacolod." data-technologies="[Add the verified technologies used.]" data-contribution="[Describe your role and the work you completed.]" data-problem="[Describe the client's need addressed by the website.]" data-lessons="[Add what you learned from this client project.]"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>City Harvest Church Bacolod Website</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="Anyag Resorts Website" data-description="A website I created for Anyag Resorts." data-technologies="HTML, CSS, Bootstrap" data-contribution="Built the resort website using HTML, CSS, and Bootstrap." data-role="Website developer" data-organization="Anyag Resorts" data-problem="[Describe the resort's need that the website addressed.]" data-lessons="[Add what you learned from this project.]"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>Anyag Resorts Website</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="City Harvest Church Bacolod Website" data-description="My first real client project: a website built for City Harvest Church in Bacolod." data-technologies="[Add the verified technologies used.]" data-contribution="Built a website for City Harvest Church in Bacolod as my first client project." data-role="Website developer" data-organization="City Harvest Church, Bacolod" data-problem="[Describe the client's need addressed by the website.]" data-lessons="[Add what you learned from this client project.]"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>City Harvest Church Bacolod Website</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
             </ul>
           </section>
           <section id="treePanel-cyber" class="tree-branch-panel" role="tabpanel" aria-labelledby="treeTab-cyber" tabindex="0">
             <p class="tree-branch-panel__lede">Cybersecurity work and labs documented in the existing portfolio.</p>
             <ul class="tree-leaf-list">
               <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="Honeypot" data-description="A cybersecurity project that sets up a honeypot, a decoy system used to attract attackers and study their behavior." data-technologies="Linux; [Add other verified tools or languages.]" data-contribution="[Describe the parts you implemented.]" data-problem="[Describe the specific project goal or problem addressed.]" data-lessons="[Add what you learned while building or studying this project.]"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>Honeypot</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="Labs on GitHub" data-description="Cybersecurity and web development labs documented and uploaded to my GitHub repositories." data-technologies="[Add verified languages, tools, or platforms from the repositories.]" data-contribution="[Add the specific labs or components you completed.]" data-problem="[Describe the learning goals these labs addressed.]" data-lessons="[Add what you learned from the lab work.]" data-github-url="https://github.com/Sean-tzy" data-github-label="Open GitHub profile"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>Labs on GitHub</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="project" data-title="Labs on GitHub" data-description="Cybersecurity and web development labs documented and uploaded to my GitHub repositories." data-technologies="[Add verified languages, tools, or platforms from the repositories.]" data-contribution="Documented and uploaded cybersecurity and web development labs to my GitHub repositories." data-role="Lab author" data-problem="[Describe the learning goals these labs addressed.]" data-lessons="[Add what you learned from the lab work.]" data-github-url="https://github.com/Sean-tzy" data-github-label="Open GitHub profile"><span class="tree-leaf__icon" aria-hidden="true">◇</span><span>Labs on GitHub</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
             </ul>
           </section>
           <section id="treePanel-competitions" class="tree-branch-panel" role="tabpanel" aria-labelledby="treeTab-competitions" tabindex="0" hidden>
             <p class="tree-branch-panel__lede">Competition entries and organizational roles already listed in the portfolio.</p>
             <ul class="tree-leaf-list">
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="KP TV Film — 1st Runner-Up" data-description="The existing portfolio records a first runner-up result at the Barangay Excellence in Action event." data-image="assets/img/KPTV.jpg" data-image-alt="Team holding a 1st runner-up trophy and check at the Barangay Excellence in Action event, Bacolod City Government Center" data-image-caption="Existing portfolio photo for the KP TV Film result."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>KP TV Film — 1st Runner-Up</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="KP TV Film — 1st Runner-Up" data-description="First runner-up in KP TV Film at Barangay Excellence in Action, held at the Bacolod City Government Center." data-date="October 24, 2026" data-role="1st runner-up" data-image="assets/img/KPTV.jpg" data-image-alt="Team holding a 1st runner-up trophy and check at the Barangay Excellence in Action event, Bacolod City Government Center" data-image-caption="Existing portfolio photo for the KP TV Film result."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>KP TV Film — 1st Runner-Up</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
               <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Robotics Competition — Champion" data-description="The existing portfolio records a robotics competition championship." data-image="assets/img/ROBOTICS.jpg" data-image-alt="Group of students at the Snap, Build, Bot robot-building event, some holding small robots" data-image-caption="Existing portfolio photo from the robotics event."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Robotics — Champion</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
               <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Game Development — 1st Runner-Up" data-description="The existing portfolio records a first runner-up result in a game development competition." data-image="assets/img/GAMEDEV.jpg" data-image-alt="Unity editor on a monitor showing a 2D platformer game scene" data-image-caption="Existing portfolio image associated with game development."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Game Development — 1st Runner-Up</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="NU Advertisement — 1st Runner-Up" data-description="School teaser advertisement competition, SECA Days 2026." data-image="assets/img/NU1.jpg" data-image-alt="Certificate of Recognition to the Computer Science Department for 1st runner-up in the SECA Days 2026 School Teaser Advertisement Competition" data-image-caption="Existing portfolio certificate image for the NU Advertisement competition."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>NU Advertisement — 1st Runner-Up</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="NU Advertisement — 1st Runner-Up" data-description="The Computer Science Department received 1st runner-up in the School Teaser Advertisement Competition during SECA Days 2026." data-date="September 4, 2026" data-role="Department award — 1st runner-up" data-organization="NU Bacolod" data-image="assets/img/NU1.jpg" data-image-alt="Certificate of Recognition to the Computer Science Department for 1st runner-up in the SECA Days 2026 School Teaser Advertisement Competition" data-image-caption="Existing portfolio certificate image for the NU Advertisement competition."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>NU Advertisement — 1st Runner-Up</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
               <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Organizations &amp; Leadership" data-description="Former photojournalist for Historia de National; Head of the Media Mavericks, Computer Science Department."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Organizations &amp; Leadership</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
             </ul>
           </section>
           <section id="treePanel-achievements" class="tree-branch-panel" role="tabpanel" aria-labelledby="treeTab-achievements" tabindex="0" hidden>
             <p class="tree-branch-panel__lede">Training, recognition, and speaker information documented in the existing portfolio.</p>
             <ul class="tree-leaf-list">
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Scholarships &amp; Trainings" data-description="The existing portfolio lists TESDA Scholar, DICT Scholar, Expert-led Cyber Security Trainings, and Web Development NC III training." data-image="assets/img/CYBERSECURITY.jpg" data-image-alt="Sean holding a Certificate of Appreciation beside the resource speaker, in front of a screen listing Expert-led Cyber Security Trainings and Web Development NC III" data-image-caption="Existing portfolio photo associated with the listed training and recognition."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Scholarships &amp; Trainings</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Ethical Hacking Seminar — 80 Hours" data-description="Ethical Hacking Seminar (80 hours), The Fence Defense Training Services Incorporated — Certificate of Completion." data-image="assets/img/ETHICALHACKING.jpg" data-image-alt="Certificate of completion for Ethical Hacking (80 hours) presented to Sean Jhanz D. Nisperos" data-image-caption="Existing portfolio image of the seminar certificate."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Ethical Hacking Seminar — 80 Hours</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Resource Speaker — Cybersecurity Awareness" data-description="Resource Speaker, “Cybersecurity Awareness: Protecting the Digital World,” Computer Science Department, NU Bacolod (August 8, 2026)." data-image="assets/img/SPEAKER1.jpg" data-image-alt="Certificate of Appreciation to Sean Jhanz D. Nisperos as Resource Speaker for the Cybersecurity Awareness seminar-workshop" data-image-caption="Existing portfolio speaker certificate."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Resource Speaker — Certificate</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
-              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Resource Speaker — Event Photo" data-description="Photo from the Cybersecurity Awareness seminar-workshop at NU Bacolod." data-image="assets/img/SPEAKER2.jpg" data-image-alt="Sean as Resource Speaker at the Cybersecurity Awareness seminar-workshop" data-image-caption="Existing portfolio photo from the speaker event."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Resource Speaker — Event Photo</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Scholarships &amp; Trainings" data-description="The existing portfolio lists TESDA Scholar, DICT Scholar, Expert-led Cyber Security Trainings, and Web Development NC III training." data-image="assets/img/SPEAKER2.jpg" data-image-alt="Sean holding a Certificate of Appreciation beside the resource speaker, in front of a screen listing Expert-led Cyber Security Trainings and Web Development NC III" data-image-caption="Event photograph with cybersecurity and Web Development NC III training information; scholarship information is recorded in the portfolio."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Scholarships &amp; Trainings</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Ethical Hacking Seminar — 80 Hours" data-description="Ethical Hacking Seminar (80 hours), The Fence Defense Training Services Incorporated — Certificate of Completion." data-date="June 28, 2026" data-role="Participant — Certificate of Completion" data-organization="The Fence Defense Training Services Incorporated" data-image="assets/img/ETHICALHACKING.jpg" data-image-alt="Certificate of completion for Ethical Hacking (80 hours) presented to Sean Jhanz D. Nisperos" data-image-caption="Existing portfolio image of the seminar certificate."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Ethical Hacking Seminar — 80 Hours</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Resource Speaker — Cybersecurity Awareness" data-description="Resource Speaker, “Cybersecurity Awareness: Protecting the Digital World,” Computer Science Department, NU Bacolod (August 8, 2026)." data-date="August 8, 2026" data-role="Resource Speaker" data-organization="NU Bacolod, Computer Science Department" data-image="assets/img/CYBERSECURITY.jpg" data-image-alt="Certificate of Appreciation to Sean Jhanz D. Nisperos as Resource Speaker for the Cybersecurity Awareness seminar-workshop" data-image-caption="Existing portfolio speaker certificate."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Resource Speaker — Certificate</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
+              <li><button class="tree-leaf" type="button" data-tree-leaf data-record-type="achievement" data-title="Cybersecurity Seminar — Event Report" data-description="Historia de National coverage of a Fundamentals of Cybersecurity seminar held on September 3 at NU Bacolod. The image does not specify the year." data-image="assets/img/SPEAKER1.jpg" data-image-alt="Historia de National report about a Fundamentals of Cybersecurity seminar at NU Bacolod" data-image-caption="Event coverage included in the portfolio."><span class="tree-leaf__icon" aria-hidden="true">✧</span><span>Cybersecurity Seminar — Event Report</span><span class="tree-leaf__arrow" aria-hidden="true">↗</span></button></li>
             </ul>
           </section>
         </div>
@@ -658,7 +653,7 @@
     </div>
   </section>
 
-  <section id="interests" class="beyond-chapter" data-chapter="06">
+  <section id="interests" class="beyond-chapter" data-chapter="06" data-explorer>
     <div class="container">
       <p class="chapter-kicker chapter-kicker--dark">CHAPTER 06 <span aria-hidden="true">·</span> BEYOND THE CLASSROOM</p>
       <h2 class="section-title">Beyond the <span>Classroom</span></h2>
@@ -723,7 +718,7 @@
               <li><strong>Coding</strong><span>Building websites and apps</span></li>
               <li><strong>Reading</strong><span>Learning about law and new topics</span></li>
             </ul>
-            <p class="beyond-topic__note">The violin is a visual motif for music and expression. <span class="story-placeholder">[Add other hobbies or passions you would like to share.]</span></p>
+            <p class="beyond-topic__note">Music, a cup of matcha, and time to explore something new.</p>
           </div>
         </article>
 
@@ -772,11 +767,8 @@
             <h3>My Dreams and Future Aspirations</h3>
             <p>The road ahead is still taking shape. These notes keep my hopes grounded in what I have shared so far.</p>
             <dl class="aspiration-facts">
-              <div><dt>Dream career</dt><dd>[Add the career or field you hope to pursue.]</dd></div>
               <div><dt>Cybersecurity</dt><dd>I enjoy learning about cybersecurity and hope to keep growing in the field.</dd></div>
               <div><dt>Professional identity</dt><dd>A skilled professional who can help others.</dd></div>
-              <div><dt>Skills to develop</dt><dd>[Add skills you want to strengthen.]</dd></div>
-              <div><dt>Long-term goals</dt><dd>[Add a long-term goal.]</dd></div>
               <div><dt>Desired impact</dt><dd>Contribute to my community.</dd></div>
             </dl>
           </div>
@@ -807,11 +799,11 @@
               </li>
               <li class="discovery-artifact">
                 <span class="discovery-artifact__icon" aria-hidden="true">◈</span>
-                <div><h4>Something unexpected</h4><p class="story-placeholder">[Add a true, unexpected detail about yourself.]</p></div>
+                <div><h4>A little everyday favorite</h4><p>I like matcha.</p></div>
               </li>
               <li class="discovery-artifact">
                 <span class="discovery-artifact__icon" aria-hidden="true">❀</span>
-                <div><h4>What inspires me</h4><p class="story-placeholder">[Name a person, experience, or idea that inspires you.]</p></div>
+                <div><h4>Who inspires me</h4><p>My parents are my inspiration.</p></div>
               </li>
               <li class="discovery-artifact">
                 <span class="discovery-artifact__icon" aria-hidden="true">☼</span>
@@ -825,10 +817,11 @@
   </section>
 
   <!-- ================= FINAL CHAPTER ================= -->
-  <section id="contact" class="final-chapter" data-chapter="07">
+  <section id="contact" class="final-chapter" data-chapter="07" data-finale>
     <div class="container">
       <p class="chapter-kicker chapter-kicker--dark">CHAPTER 07 <span aria-hidden="true">·</span> THE VIOLIN AND THE FINAL CHAPTER</p>
-      <h2 class="section-title">The Violin and <span>The Final Chapter</span></h2>
+      <h2 class="section-title">Every string has <span>a story.</span></h2>
+      <p class="finale-lede">A little music. A little reflection. One more connection. Play a string and let the final chapter unfold.</p>
 
       <div class="final-clearing" aria-hidden="true">
         <svg class="final-clearing__artwork" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -903,14 +896,8 @@
             <a class="final-contact__link" href="https://github.com/Sean-tzy" target="_blank" rel="noopener noreferrer">
               <span>GitHub</span><strong>github.com/Sean-tzy</strong>
             </a>
-            <div class="final-contact__link">
-              <span>LinkedIn</span><strong class="story-placeholder">[Add a verified LinkedIn profile link.]</strong>
-            </div>
             <a class="final-contact__link" href="https://www.facebook.com/seanjhanz0716" target="_blank" rel="noopener noreferrer">
               <span>Optional social</span><strong>Facebook</strong>
-            </a>
-            <a class="final-contact__link" href="tel:+639939322645">
-              <span>Phone</span><strong>09939322645</strong>
             </a>
             <p class="final-contact__location"><span>Location</span><strong>Bacolod City, Philippines</strong></p>
           </div>
@@ -928,19 +915,8 @@
       </div>
 
       <div class="final-ending">
-        <p class="final-ending__message">Every story deserves to be protected. Every journey deserves a beginning.</p>
-        <p class="final-ending__thanks">Thank you for wandering through my little corner of the digital world.</p>
-        <p class="final-ending__wordmark">SEAN</p>
-        <div class="final-book" aria-hidden="true">
-          <div class="final-book__pages"></div>
-          <div class="final-book__cover final-book__cover--left">
-            <span class="final-book__title">SE</span><span class="final-book__inside"></span>
-          </div>
-          <div class="final-book__cover final-book__cover--right">
-            <span class="final-book__title">AN</span><span class="final-book__inside"></span>
-          </div>
-        </div>
-        <a class="final-ending__return" href="#home">Return to the beginning</a>
+        <p class="final-ending__message">The chapter ends.<br><em>The conversation can begin.</em></p>
+        <a class="final-ending__return" href="#home">Revisit the story ↑</a>
       </div>
     </div>
   </section>
@@ -948,10 +924,10 @@
 
   <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
-    <p class="site-footer__name">Sean</p>
-    <p class="site-footer__motto">Personal motto: <span class="story-placeholder">[Add your personal motto.]</span></p>
-    <p class="site-footer__copyright">&copy; 2026 Sean. All Rights Reserved.</p>
-    <a href="#home" class="text-warning">Return to SEAN</a>
+    <p class="site-footer__copyright">&copy; 2026 Sean Jhanz D. Nisperos. All Rights Reserved.</p>
+    <p class="site-footer__motto">To understand. To protect. To preserve.</p>
+    <span>Bacolod City, Philippines</span>
+    <a href="mailto:seanjhanz111@gmail.com">Say hello ↗</a>
   </footer>
 
   <a id="backToTop" class="back-to-top" href="#home" aria-label="Back to top" hidden>&uarr;</a>
@@ -962,5 +938,7 @@
   <script src="js/script.js"></script>
   <script src="js/polish.js"></script>
   <script src="js/atmosphere.js"></script>
+  <script src="js/interactive.js"></script>
+  <script src="js/finale.js"></script>
 </body>
 </html>

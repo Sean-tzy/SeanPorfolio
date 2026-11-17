@@ -375,6 +375,7 @@
     });
 
     registerChapterAnimation("02", ({ timeline, section }) => {
+      if (identityBook.hasAttribute('data-interactive-book')) return;
       const cover = section.querySelector(".storybook-cover");
       const pageTurns = Array.from(section.querySelectorAll(".storybook-page-turn"));
       if (!cover || pageTurns.length !== 3) {
@@ -440,21 +441,10 @@
       }, 0.25);
     });
 
-    registerChapterAnimation("05", ({ timeline, section }) => {
-      const treeArtwork = section.querySelector(".tree-artwork");
-      const branchTabs = Array.from(section.querySelectorAll(".tree-branch-tab"));
-      if (!treeArtwork || branchTabs.length !== 5) {
-        throw new Error("SEAN magical tree is missing its scene or five branch controls.");
-      }
-
-      timeline.to(treeArtwork, {
-        scale: 1.08,
-        transformOrigin: "50% 60%",
-        ease: "none"
-      }, 0);
-    });
+    // The 3D tree owns its camera and renders only on interaction.
 
     registerChapterAnimation("06", ({ timeline, section }) => {
+      if (section.hasAttribute('data-explorer')) return;
       const topics = Array.from(section.querySelectorAll("[data-beyond-topic]"));
       const discoveries = Array.from(section.querySelectorAll(".discovery-artifact"));
       const scenes = Array.from(section.querySelectorAll(".beyond-scene, .discovery-sky"));
@@ -488,6 +478,7 @@
     });
 
     registerChapterAnimation("07", ({ timeline, section }) => {
+      if (section.hasAttribute('data-finale')) return;
       const storyLines = Array.from(section.querySelectorAll("[data-final-story]"));
       const bookCovers = Array.from(section.querySelectorAll(".final-book__cover"));
       const clearing = section.querySelector(".final-clearing");
@@ -527,7 +518,7 @@
     });
   }
 
-  registerEnvironmentalWind();
+  // Avoid scroll-driven root custom properties invalidating every SVG scene.
   registerSceneMotionObserver();
   registerEnchantedPointer();
 
@@ -569,7 +560,48 @@
     throw new Error("SEAN project archive is missing required tree controls or detail fields.");
   }
 
+  const branchDialog = document.createElement('dialog');
+  branchDialog.className = 'branch-dialog';
+  branchDialog.setAttribute('aria-labelledby', 'branchDialogTitle');
+  branchDialog.innerHTML = '<header class="branch-dialog__header"><div><p class="chapter-kicker">THE LIVING ARCHIVE</p><h2 id="branchDialogTitle"></h2></div><button type="button" class="branch-dialog__close" aria-label="Close branch">✕</button></header>';
+  document.body.append(branchDialog);
+  branchDialog.append(treeExplorer, treeDetail);
+  let branchTrigger = null;
+  function openBranch(tab) {
+    branchTrigger = tab;
+    document.getElementById('branchDialogTitle').textContent = tab.textContent.trim().replace(/^\d+\s*/, '');
+    treeExplorer.hidden = false;
+    treeDetail.hidden = true;
+    if (!branchDialog.open) branchDialog.showModal();
+    document.documentElement.classList.add('branch-modal-open');
+    branchDialog.querySelector('.branch-dialog__close').focus();
+  }
+  branchDialog.querySelector('.branch-dialog__close').addEventListener('click', () => branchDialog.close());
+  branchDialog.addEventListener('click', event => {
+    const rect = branchDialog.getBoundingClientRect();
+    if (event.target === branchDialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) branchDialog.close();
+  });
+  branchDialog.addEventListener('close', () => {
+    document.documentElement.classList.remove('branch-modal-open');
+    branchTrigger?.focus({ preventScroll: true });
+  });
+  treeTabs.forEach(tab => tab.setAttribute('aria-haspopup', 'dialog'));
+  treeReturn.textContent = '← Back to this branch';
+  document.querySelectorAll('.tree-empty-state').forEach(message => {
+    message.textContent = 'This branch is still growing. New projects will appear here.';
+  });
   let selectedTreeLeaf = null;
+  const recordFacts = document.createElement('dl');
+  recordFacts.className = 'tree-record-facts';
+  treeDetailDescription.after(recordFacts);
+  document.querySelectorAll('[data-open-branch]').forEach(button => {
+    button.addEventListener('click', () => {
+      const tab = document.getElementById('treeTab-' + button.dataset.openBranch);
+      if (!treeTabs.includes(tab)) return;
+      tab.click();
+      branchTrigger = button;
+    });
+  });
 
   function activateTreeBranch(tab, moveFocus) {
     const panelId = tab.getAttribute("aria-controls");
@@ -619,6 +651,15 @@
     treeDetailKind.textContent = recordType === "project" ? "Project leaf" : "Portfolio record";
     treeDetailTitle.textContent = title;
     treeDetailDescription.textContent = description;
+    recordFacts.replaceChildren();
+    for (const [label, value] of [['Date', leaf.dataset.date || leaf.dataset.year], ['Role / recognition', leaf.dataset.role], ['Organization / course', leaf.dataset.organization]]) {
+      if (!value) continue;
+      const row = document.createElement('div');
+      const term = document.createElement('dt'); term.textContent = label;
+      const definition = document.createElement('dd'); definition.textContent = value;
+      row.append(term, definition); recordFacts.append(row);
+    }
+    recordFacts.hidden = !recordFacts.children.length;
     treeProjectFields.hidden = recordType !== "project";
 
     if (recordType === "project") {
@@ -665,6 +706,15 @@
       treeImageCaption.hidden = true;
     }
 
+    // Keep unfilled author notes in the source without presenting them as project facts.
+    treeProjectFields.querySelectorAll(':scope > div').forEach(row => {
+      const value = row.querySelector('dd');
+      const link = value.querySelector('a');
+      if (link) { row.hidden = !link.hasAttribute('href'); return; }
+      value.textContent = value.textContent.replace(/\[[^\]]*\]/g, '').replace(/[;\s]+$/, '').trim();
+      row.hidden = !value.textContent;
+    });
+    treeDetail.querySelector('.tree-artifact').hidden = !leaf.dataset.image;
     if (selectedTreeLeaf) {
       selectedTreeLeaf.classList.remove("is-selected");
       selectedTreeLeaf.setAttribute("aria-pressed", "false");
@@ -672,13 +722,14 @@
     selectedTreeLeaf = leaf;
     selectedTreeLeaf.classList.add("is-selected");
     selectedTreeLeaf.setAttribute("aria-pressed", "true");
-    treeArchive.hidden = true;
+    treeExplorer.hidden = true;
     treeDetail.hidden = false;
-    treeDetail.focus();
+    treeDetail.focus({ preventScroll: true });
+    branchDialog.scrollTop = 0;
   }
 
   treeTabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTreeBranch(tab, false));
+    tab.addEventListener("click", () => { activateTreeBranch(tab, false); openBranch(tab); });
     tab.addEventListener("keydown", event => {
       let nextIndex = index;
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
@@ -698,19 +749,19 @@
     });
   });
 
-  treeArchive.addEventListener("click", event => {
+  treeExplorer.addEventListener("click", event => {
     if (!(event.target instanceof Element)) {
       return;
     }
     const leaf = event.target.closest("[data-tree-leaf]");
-    if (leaf && treeArchive.contains(leaf)) {
+    if (leaf && treeExplorer.contains(leaf)) {
       showTreeLeaf(leaf);
     }
   });
 
   treeReturn.addEventListener("click", () => {
     treeDetail.hidden = true;
-    treeArchive.hidden = false;
+    treeExplorer.hidden = false;
     if (selectedTreeLeaf) {
       selectedTreeLeaf.focus();
     }
@@ -718,6 +769,8 @@
 
   treeDetail.addEventListener("keydown", event => {
     if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
       treeReturn.click();
     }
   });

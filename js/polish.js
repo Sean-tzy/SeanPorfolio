@@ -33,6 +33,7 @@
   });
 
   document.querySelector('.book-controls').hidden = false;
+  if (!book.hasAttribute('data-interactive-book')) {
   read.addEventListener('click', () => {
     const open = !book.classList.contains('book-reading');
     book.classList.toggle('book-reading', open);
@@ -49,6 +50,8 @@
     status.textContent = 'Scroll forward or backward to turn the pages.';
     book.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' });
   });
+
+  }
 
   const detail = document.getElementById('treeDetail');
   const archive = document.getElementById('treeArchive');

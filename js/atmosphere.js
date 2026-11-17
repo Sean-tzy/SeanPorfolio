@@ -20,7 +20,7 @@
 
   function measure() {
     width = innerWidth; height = innerHeight;
-    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const dpr = 1;
     canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     motes.length = 0;
@@ -29,6 +29,7 @@
     }
     offsets = chapters.map(el => ({ el, top: el.getBoundingClientRect().top + scrollY, height: el.offsetHeight }));
     updateChapter();
+    sync();
   }
 
   function updateChapter() {
@@ -42,16 +43,13 @@
       root.dataset.scene = id;
       caption.textContent = id + ' / 07 — ' + current.el.querySelector('h1,h2').textContent.replace(/\s+/g, ' ').trim();
     }
-    if (!reduced.matches) {
-      root.style.setProperty('--sky-y', Math.round((scrollY / Math.max(document.documentElement.scrollHeight - height, 1) - .5) * 70) + 'px');
-    }
   }
   function scheduleChapter() { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateChapter); }
 
   function draw(now) {
     frame = 0;
     if (disposed || reduced.matches || document.hidden) return;
-    frame = requestAnimationFrame(draw);
+    // Decorative atmosphere is painted once on resize, not continuously.
     const interval = width < 768 ? 50 : 33;
     if (now - last < interval) return;
     const step = Math.min((now - last) / 33, 2);
@@ -100,15 +98,16 @@
     if (reduced.matches || document.hidden || disposed) { ctx.clearRect(0, 0, width, height); return; }
     frame = requestAnimationFrame(draw);
   }
-  let hoveredButton = null, hoveredCard = null;
+  let hoveredButton = null, hoveredCard = null, lastPointer = 0;
   function resetHover() {
     if (hoveredButton) { hoveredButton.style.removeProperty('--magnet-x'); hoveredButton.style.removeProperty('--magnet-y'); }
     hoveredButton = null; hoveredCard = null;
   }
   document.addEventListener('pointermove', event => {
     if (event.pointerType !== 'mouse' || !fine.matches || reduced.matches) return;
+    if (event.timeStamp - lastPointer < 32) return;
+    lastPointer = event.timeStamp;
     pointer.x = event.clientX; pointer.y = event.clientY; pointer.active = true;
-    root.style.setProperty('--sky-x', ((event.clientX / width - .5) * 22).toFixed(1) + 'px');
     const card = event.target.closest(cards);
     if (card) {
       const rect = card.getBoundingClientRect();

@@ -1,0 +1,45 @@
+/* Interaction is local: no continuous rendering or scroll-bound page turns. */
+#identityBook, #identityBook *, .tree-clearing, .tree-clearing * { box-sizing: border-box; }
+#identityBook.book-interactive { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 0; padding: 14px; border-radius: 12px; --storybook-split: 45%; }
+#identityBook.book-interactive .storybook-left { min-height: 32rem; }
+#identityBook.book-interactive .storybook-left-page { height: 100%; padding: clamp(1.25rem, 3vw, 3rem); }
+#identityBook.book-interactive .storybook-cover, #identityBook.book-interactive .storybook-page-turn { display: none; }
+#identityBook.book-interactive .storybook-pages { display: grid; perspective: 1500px; gap: 0; align-content: stretch; }
+#identityBook.book-interactive .storybook-page { grid-area: 1 / 1; min-height: 32rem; padding: clamp(1.5rem, 4vw, 3.5rem); transform-origin: left center; box-shadow: inset 12px 0 24px #5c482018, 3px 2px 0 #cdbf9f, 6px 4px 0 #ede2c9; backface-visibility: hidden; }
+#identityBook.book-interactive .storybook-page h3 { font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.15; margin: 1.5rem 0; }
+#identityBook.book-interactive .storybook-page-content { line-height: 1.85; }
+#identityBook.book-interactive.book-all .storybook-pages { gap: 1.5rem; }
+#identityBook.book-interactive.book-all .storybook-page { grid-area: auto; min-height: 0; }
+.book-navigation { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 1.5rem 0 0; }
+.book-navigation button, .tree-camera button { border: 1px solid #75815d; border-radius: 30px; background: #14241b; color: #e2e8ce; padding: .65rem 1rem; min-height: 44px; }
+.book-navigation button[aria-current=true], .tree-camera button:hover { background: #d0dcae; color: #132017; }
+.book-navigation button:disabled { opacity: .4; cursor: default; }
+.book-navigation .book-position { margin-left: auto; font: .75rem monospace; color: #bfcca9; }
+.tree-clearing.tree-dimensional { display: flex; flex-direction: column; min-height: 0; background: radial-gradient(ellipse at 50% 35%, #233f32, #08140f 70%); overflow: hidden; }
+.tree-dimensional .tree-artwork { display: none; }
+.tree-dimensional::before { display: none; }
+.tree-stage { position: relative; height: clamp(340px, 48vw, 580px); width: 100%; }
+.tree-stage canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+.tree-stage canvas:active { cursor: grabbing; }
+.tree-stage canvas:focus-visible { outline-offset: -5px; }
+.tree-scene-label { position: absolute; top: 1.5rem; left: 1.5rem; font: .65rem monospace; letter-spacing: .17em; color: #b5c799; pointer-events: none; }
+.tree-camera { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem; padding: .75rem; }
+.tree-dimensional .tree-clearing-caption { position: static; transform: none; width: auto; margin: 0; padding: .75rem 1rem; background: transparent; border: 0; text-align: center; font-size: .78rem; }
+.tree-dimensional .tree-branch-tabs { position: static; display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; padding: 1rem 1rem 1.5rem; }
+.tree-dimensional .tree-branch-tab { position: static; width: auto; transform: none; min-height: 44px; padding: .7rem 1rem; font-size: .78rem; backdrop-filter: none; }
+/* Avoid animated SVG paints and full-screen blur while scrolling. */
+.village-world *, .beyond-scene svg *, .final-clearing__artwork *, .tree-artwork * { animation: none !important; }
+.atmosphere-haze { transform: none; transition: none; }
+#mainNav { backdrop-filter: none; background: #0c1912 !important; }
+.tree-artwork, .beyond-scene svg, .final-clearing__artwork { filter: none; }
+[data-chapter].motion-offscreen *, [data-chapter].motion-offscreen *::before, [data-chapter].motion-offscreen *::after { animation-play-state: paused !important; }
+@media (max-width: 767.98px) {
+  #identityBook.book-interactive { grid-template-columns: 1fr; padding: 8px; gap: 12px; }
+  #identityBook.book-interactive::before { display: none; }
+  #identityBook.book-interactive .storybook-left { min-height: 0; }
+  #identityBook.book-interactive .storybook-page { min-height: 34rem; padding: 1.5rem; }
+  .book-navigation { justify-content: center; }
+  .book-navigation .book-position { margin-left: 0; flex-basis: 100%; text-align: center; }
+  .tree-dimensional .tree-branch-tab { flex: 1 1 42%; }
+}
+@media (prefers-reduced-motion: reduce) { .book-interactive * { animation: none !important; transition: none !important; } }
