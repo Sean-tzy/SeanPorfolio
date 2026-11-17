@@ -9,28 +9,7 @@
   const follow = document.getElementById('bookScroll');
   const status = document.getElementById('bookStatus');
   let frame = 0;
-  let pointer = null;
-
-  function paintDepth() {
-    frame = 0;
-    if (!pointer || reduced.matches || !fine.matches) return;
-    const rect = hero.getBoundingClientRect();
-    const x = (pointer.x - rect.left) / rect.width;
-    const y = (pointer.y - rect.top) / rect.height;
-    hero.style.setProperty('--light-x', Math.round(x * 100) + '%');
-    hero.style.setProperty('--light-y', Math.round(y * 100) + '%');
-    portrait.style.setProperty('--tilt-x', ((x - .5) * 7).toFixed(2) + 'deg');
-    portrait.style.setProperty('--tilt-y', ((.5 - y) * 5).toFixed(2) + 'deg');
-  }
-  hero.addEventListener('pointermove', event => {
-    if (event.pointerType !== 'mouse' || reduced.matches) return;
-    pointer = { x: event.clientX, y: event.clientY };
-    if (!frame) frame = requestAnimationFrame(paintDepth);
-  }, { passive: true });
-  hero.addEventListener('pointerleave', () => {
-    portrait.style.removeProperty('--tilt-x');
-    portrait.style.removeProperty('--tilt-y');
-  });
+  // Keep the hero lighting static; moving its gradient repainted the whole hero.
 
   document.querySelector('.book-controls').hidden = false;
   if (!book.hasAttribute('data-interactive-book')) {
@@ -104,9 +83,6 @@
     document.getElementById('enchantedCursor')?.classList.remove('is-visible', 'is-pressed');
     document.documentElement.classList.remove('enchanted-pointer-ready');
   });
-  window.addEventListener('pointermove', () => {
-    if (fine.matches && !reduced.matches) document.documentElement.classList.add('enchanted-pointer-ready');
-  }, { passive: true });
   window.addEventListener('pagehide', event => {
     if (event.persisted) return;
     observer.disconnect();

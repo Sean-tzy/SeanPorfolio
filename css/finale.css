@@ -91,16 +91,16 @@
 .finale-lede { color:#aebfa7; line-height:1.8; max-width:40rem; margin:1.5rem 0 2.5rem; }
 .finale-stage { display:grid; grid-template-columns:1fr 1fr; border:1px solid #71815960; background:#101e16; border-radius:14px; overflow:hidden; }
 .instrument { position:relative; padding:1.5rem 2rem 1rem; background:radial-gradient(ellipse at 50% 45%,#33482d,#11241a 65%); scroll-margin-top:7rem; }
-.instrument-caption { display:flex; justify-content:space-between; gap:1rem; color:#bdc399; font:.57rem monospace; letter-spacing:.12em; }
+.instrument-caption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem 1rem; color:#cbd4b4; font:.68rem monospace; letter-spacing:.08em; }
 .playable-violin { display:block; width:100%; height:420px; margin:.5rem auto 0; }
 .violin-bow { transform-origin:center; }
 .playable-violin [data-string] { pointer-events:stroke; cursor:pointer; }
 .violin-notes { display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; max-width:360px; margin:0 auto; }
 .violin-notes button { display:flex; flex-direction:column; align-items:center; border:1px solid #9a9d6c80; border-radius:8px; background:#18281d; color:#e9e8cc; padding:.6rem; min-height:60px; }
 .violin-notes span { font:1.4rem Georgia,serif; }
-.violin-notes small { font:.55rem monospace; letter-spacing:.06em; opacity:.6; }
+.violin-notes small { font:.65rem monospace; letter-spacing:.04em; color:#c4d0b5; }
 .violin-notes button:hover { border-color:#e4d296; background:#33462b; }
-.instrument-hint { text-align:center; color:#a9bb94; font:.65rem monospace; margin:1rem 0 .2rem; }
+.instrument-hint { text-align:center; color:#c2d0b1; font:.75rem/1.6 monospace; margin:1rem 0 .2rem; }
 .finale-reading { padding:clamp(1.5rem,4vw,4rem); display:flex; flex-direction:column; justify-content:center; min-width:0; }
 .finale-reading .chapter-kicker { font-size:.65rem; }
 .finale-reading .final-story { margin:2rem 0; padding:0; min-height:190px; display:flex; align-items:center; text-align:left; }
@@ -114,7 +114,7 @@
 .finale-actions button:first-child { background:#cfdbb3; color:#18251a; border-color:#cfdbb3; }
 .sound-controls { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid #65784a50; display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; }
 .sound-controls button { font-size:.7rem; padding:.5rem .8rem; }
-.sound-controls span { font-size:.65rem; color:#a6b698; }
+.sound-controls span { font-size:.78rem; color:#c0ceb1; }
 .finale-interactive .final-contact { margin-top:3rem; max-width:none; padding:clamp(1.5rem,4vw,3rem); border-radius:12px; box-shadow:none; }
 .finale-interactive .final-contact h3 { text-align:left; font:400 clamp(1.7rem,3vw,2.5rem) Georgia,serif; }
 .contact-prompts { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:1.5rem 0 2rem; }

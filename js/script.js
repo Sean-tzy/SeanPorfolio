@@ -520,7 +520,7 @@
 
   // Avoid scroll-driven root custom properties invalidating every SVG scene.
   registerSceneMotionObserver();
-  registerEnchantedPointer();
+  // Native pointer avoids artificial tracking delay and decorative repaint work.
 
   const treeArchive = document.getElementById("treeArchive");
   const treeExplorer = document.getElementById("treeExplorer");

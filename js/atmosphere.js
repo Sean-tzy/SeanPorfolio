@@ -98,13 +98,15 @@
     if (reduced.matches || document.hidden || disposed) { ctx.clearRect(0, 0, width, height); return; }
     frame = requestAnimationFrame(draw);
   }
+  // Decorative mouse tracking is disabled to keep scrolling and pointing responsive.
+  const pointerEffectsEnabled = false;
   let hoveredButton = null, hoveredCard = null, lastPointer = 0;
   function resetHover() {
     if (hoveredButton) { hoveredButton.style.removeProperty('--magnet-x'); hoveredButton.style.removeProperty('--magnet-y'); }
     hoveredButton = null; hoveredCard = null;
   }
   document.addEventListener('pointermove', event => {
-    if (event.pointerType !== 'mouse' || !fine.matches || reduced.matches) return;
+    if (!pointerEffectsEnabled || event.pointerType !== 'mouse' || !fine.matches || reduced.matches) return;
     if (event.timeStamp - lastPointer < 32) return;
     lastPointer = event.timeStamp;
     pointer.x = event.clientX; pointer.y = event.clientY; pointer.active = true;
@@ -128,7 +130,7 @@
     label.textContent = target?.matches('[data-tree-leaf]') ? 'OPEN' : target?.matches('.tree-branch-tab') ? 'EXPLORE' : target?.id === 'bookRead' ? 'READ' : target ? 'FOLLOW' : '';
   }, { passive: true });
   document.addEventListener('pointerdown', event => {
-    if (reduced.matches || !fine.matches || event.pointerType !== 'mouse' || event.target.closest('input,textarea')) return;
+    if (!pointerEffectsEnabled || reduced.matches || !fine.matches || event.pointerType !== 'mouse' || event.target.closest('input,textarea')) return;
     for (let i = 0; i < 9; i++) {
       const angle = Math.PI * 2 * i / 9;
       sparks.push({ x: event.clientX, y: event.clientY, vx: Math.cos(angle) * 1.7, vy: Math.sin(angle) * 1.7, life: .8 });

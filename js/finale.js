@@ -228,7 +228,15 @@
   const visible = new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop();});visible.observe(stage);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
   reduced.addEventListener('change',()=>stage.getAnimations({subtree:true}).forEach(animation=>animation.cancel()));
-  window.addEventListener('pagehide',event=>{stop();audio?.suspend();if(!event.persisted){visible.disconnect();audio?.close();}});
+  window.addEventListener('pagehide',event=>{
+    stop();
+    sound=false;
+    soundButton.setAttribute('aria-pressed','false');
+    soundButton.textContent='Enable violin tones';
+    soundStatus.textContent='Violin strings only · sound off';
+    audio?.suspend();
+    if(!event.persisted){visible.disconnect();audio?.close();}
+  });
 
   const contact = finale.querySelector('.final-contact');
   const composer = document.createElement('div'); composer.className='contact-prompts';
