@@ -12,6 +12,8 @@
   <link href="css/polish.css" rel="stylesheet">
   <link href="css/interactive.css" rel="stylesheet">
   <link href="css/finale.css" rel="stylesheet">
+  <link href="css/chapter-depth.css" rel="stylesheet">
+  <link href="css/home-depth.css" rel="stylesheet">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
@@ -112,6 +114,8 @@
         </g>
         <g class="village-house">
           <ellipse cx="800" cy="748" rx="294" ry="43" fill="#283a2e" opacity=".38"/>
+          <path d="m987 520 83-43v151l-83 25Z" fill="#6e593e" stroke="#493a2d" stroke-width="10" stroke-linejoin="round"/>
+          <path d="m1043 493 4 137m-40-88 58-28" fill="none" stroke="#a8895b" stroke-width="5" opacity=".65"/>
           <path d="M635 639v134m330-134v134M682 637v137m238-137v137" stroke="#594432" stroke-linecap="round" stroke-width="24"/>
           <path d="M614 520h373v133H614Z" fill="#bd9866" stroke="#594432" stroke-width="12"/>
           <path d="M614 544h373m-373 23h373m-373 23h373m-373 23h373" stroke="#8f704d" stroke-width="5" opacity=".68"/>
@@ -119,6 +123,8 @@
           <path d="M843 554h92v66h-92Z" fill="#96a88e" stroke="#594432" stroke-width="10"/>
           <path d="M889 555v64m-46-32h92" stroke="#594432" stroke-width="8"/>
           <path d="m559 533 241-192 243 192-25 32-218-158-216 158Z" fill="url(#villageNipa)" stroke="#4b392b" stroke-width="10" stroke-linejoin="round"/>
+          <path d="m800 341 108-28 185 178-50 42Z" fill="#493b2d" stroke="#352e26" stroke-width="8" stroke-linejoin="round"/>
+          <path d="m915 324 150 166m-121-150 121 134" fill="none" stroke="#8c6945" stroke-width="7" opacity=".62"/>
           <path d="m597 526 203-161 204 161M628 513l172-136 174 136M663 499l137-109 139 109" fill="none" stroke="#9d764b" stroke-linecap="round" stroke-width="8" opacity=".72"/>
           <path d="m735 653 42 51h46l41-51" fill="none" stroke="#574332" stroke-width="12" stroke-linejoin="round"/>
           <path d="M786 704v40m-23-1h69m-89 20h109" stroke="#6b5039" stroke-linecap="round" stroke-width="10"/>
@@ -141,6 +147,9 @@
           <circle cx="348" cy="836" r="4"/>
         </g>
       </svg>
+      <div class="village-depth-light"></div>
+      <div class="village-depth-rim village-depth-rim--near"></div>
+      <div class="village-depth-rim village-depth-rim--far"></div>
       <div class="village-atmosphere"></div>
     </div>
     <div class="village-content container">
@@ -936,7 +945,9 @@
   <script src="js/script.js"></script>
   <script src="js/polish.js"></script>
   <script src="js/atmosphere.js"></script>
+  <script src="js/home-depth.js"></script>
   <script src="js/interactive.js"></script>
   <script src="js/finale.js"></script>
+  <script src="js/chapter-depth.js"></script>
 </body>
 </html>

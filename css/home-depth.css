@@ -1,0 +1,79 @@
+/* A layered village scene: small compositor transforms, no WebGL or scroll loop. */
+#home .village-world {
+  opacity: .48;
+  -webkit-mask-image: none;
+  mask-image: none;
+  background: #101d18;
+  perspective: 1100px;
+  pointer-events: none;
+}
+
+#home .village-artwork {
+  position: relative;
+  z-index: 1;
+  transform: perspective(1100px) rotateX(var(--depth-rotate-x, 0deg)) rotateY(var(--depth-rotate-y, 0deg)) scale(1.1);
+  transform-origin: center 58%;
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+
+#home .village-mountains--far,
+#home .village-hills--back,
+#home .village-hills--front,
+#home .village-house,
+#home .village-palm,
+#home .village-shrubs,
+#home .village-grass {
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+
+#home .village-mountains--far { transform: var(--depth-far, translate3d(0, 0, 0)); }
+#home .village-hills--back { transform: var(--depth-back, translate3d(0, 0, 0)); }
+#home .village-hills--front { transform: var(--depth-front, translate3d(0, 0, 0)); }
+#home .village-house { transform: var(--depth-house, translate3d(0, 0, 0)); }
+#home .village-palm--left,
+#home .village-palm--right { transform: var(--depth-palm, translate3d(0, 0, 0)); }
+#home .village-shrubs,
+#home .village-grass { transform: var(--depth-shrubs, translate3d(0, 0, 0)); }
+
+#home .village-depth-light {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: radial-gradient(ellipse 34% 31% at 76% 25%, rgb(253 221 147 / 22%), transparent 100%);
+}
+
+#home .village-depth-rim {
+  position: absolute;
+  z-index: 3;
+  inset: auto -8% -6%;
+  height: 27%;
+  background: linear-gradient(180deg, #39523c 0%, #172c25 58%, #0a1612 100%);
+  clip-path: polygon(0 40%, 12% 29%, 24% 48%, 36% 37%, 50% 56%, 63% 37%, 75% 51%, 88% 24%, 100% 43%, 100% 100%, 0 100%);
+  transform: var(--depth-rim, translate3d(0, 0, 0));
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+
+#home .village-depth-rim--far {
+  z-index: 2;
+  bottom: 7%;
+  height: 17%;
+  opacity: .62;
+  background: #6e8660;
+  clip-path: polygon(0 75%, 15% 45%, 30% 62%, 46% 39%, 62% 68%, 79% 42%, 100% 68%, 100% 100%, 0 100%);
+  transform: var(--depth-rim-far, translate3d(0, 0, 0));
+}
+
+#home .village-atmosphere {
+  z-index: 4;
+  background: linear-gradient(90deg, rgb(8 15 13 / 92%) 0%, rgb(8 15 13 / 72%) 35%, rgb(8 15 13 / 26%) 73%, rgb(8 15 13 / 45%) 100%), linear-gradient(0deg, #080f0d 0%, transparent 42%, rgb(8 15 13 / 18%) 100%);
+}
+
+@media (max-width: 767.98px) {
+  #home .village-world { opacity: .32; }
+  #home .village-artwork { transform: scale(1.15); transform-origin: 60% center; }
+  #home .village-atmosphere { background: linear-gradient(90deg, rgb(8 15 13 / 81%), rgb(8 15 13 / 55%)), linear-gradient(0deg, #080f0d, transparent 65%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home .village-world, #home .village-world * { transition: none !important; }
+}
