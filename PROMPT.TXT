@@ -1,0 +1,254 @@
+Act as a **senior UI/UX designer, creative developer, and motion designer**. Improve my existing SEAN portfolio without rebuilding it from scratch.
+
+The goal is to make the weaker sections feel **premium, cinematic, tactile, interactive, and modern**, while maintaining excellent performance and smooth scrolling.
+
+## 1. STORYBOOK OF IDENTITY — REAL PAGE TURN
+
+Make the NEXT/PREVIOUS transition feel like **literally turning a physical book page**, not a fade or slide.
+
+Use smooth 3D page-turning with:
+- perspective and `rotateY`
+- correct transform origin
+- page curl/bend illusion
+- moving page shadows
+- next page gradually revealed underneath
+- subtle page thickness and spine shadow
+- natural settling animation
+
+NEXT and PREVIOUS must turn in opposite directions.
+
+Prevent repeated clicks while the animation is running. Keep it lightweight and simplify it appropriately on mobile.
+
+---
+
+## 2. PATH OF LEARNING — GUIDING LIGHT
+
+Make this section much more interactive.
+
+Create a **scroll-reactive light near the center of the viewport** that appears to travel through the educational path as the user scrolls.
+
+Milestones should transition through:
+
+**inactive → approaching → illuminated → completed**
+
+The light can illuminate the path, connecting lines, and nearby milestones. Previous milestones remain softly illuminated while future milestones stay dim.
+
+The effect should feel like:
+
+> The user is lighting the path of my educational journey.
+
+Keep the glow elegant and readable, not an oversized blur.
+
+---
+
+## 3. SANCTUARY OF THE DIGITAL GUARDIAN
+
+I am not satisfied with this section. Reimagine it as an **interactive cybersecurity environment**, not another set of cards.
+
+Consider a central digital security core surrounded by cybersecurity concepts.
+
+Interactions can include:
+- responsive security nodes
+- rotating security layers/rings
+- scanning effects
+- connections activating toward the core
+- cursor proximity reactions
+- information revealed when exploring nodes
+- scroll-based unlocking
+
+The visual idea should communicate:
+
+**PROTECT → DETECT → ANALYZE → RESPOND**
+
+Avoid cliché hacker aesthetics such as Matrix rain, excessive neon green, fake terminals, and meaningless numbers.
+
+Make it sophisticated and premium.
+
+---
+
+## 4. TECHNICAL SKILLS — MAJOR UI/UX UPGRADE
+
+Make Technical Skills one of the strongest sections of the website.
+
+DO NOT use generic:
+- progress bars
+- percentages
+- circles
+- Bootstrap cards
+- simple logo grids
+
+Instead create an **interactive capability system**.
+
+Possible categories:
+
+**Development / Cybersecurity / Database & Backend / Design / Tools**
+
+Consider a skill constellation, technical architecture, or connected capability map.
+
+When a category or skill is explored:
+- related technologies activate
+- connections appear
+- unrelated elements subtly fade
+- contextual information appears
+- the interface responds to cursor movement
+
+Show proficiency through **hierarchy, interaction, typography, and organization**, not fake percentages.
+
+It should make someone think:
+
+> “This person understands technology AND interaction design.”
+
+---
+
+## 5. BEYOND THE CLASSROOM
+
+### Hobbies & Passions — Butterfly
+
+Replace the flat/drawn butterfly with an elegant **3D or pseudo-3D butterfly**.
+
+It should have dimensional wings, natural flapping, depth movement, subtle cursor response, and scroll interaction.
+
+It can occasionally guide the user's attention toward content.
+
+Do not make it childish.
+
+Use CSS 3D/SVG if that performs better than Three.js.
+
+### Dreams & Aspirations — Horizon
+
+Upgrade the Horizon into a dimensional scene with:
+
+**foreground → midground → distant horizon → atmosphere → sky**
+
+Use subtle parallax so the horizon opens as the user scrolls.
+
+Future goals can gradually emerge from the distance.
+
+The feeling should communicate:
+
+**possibility, ambition, direction, and future.**
+
+Keep it elegant, not game-like.
+
+### Five Things — Little Things
+
+Replace the basic presentation with a **digital cabinet of curiosities**.
+
+Create five small dimensional objects/artifacts representing the five facts.
+
+Hover/click interactions can:
+- rotate objects slightly in 3D
+- reveal another side
+- show annotations
+- reveal the personal fact
+- trigger a unique micro-animation
+
+Make each discovery slightly different while keeping one consistent design language.
+
+---
+
+## 6. CONNECT THE EXPERIENCE
+
+Make the sections feel connected rather than like separate websites.
+
+Possible visual flow:
+
+**Storybook → Learning Path → Digital Guardian → Technical Skills → Butterfly → Horizon → Little Things**
+
+Transitions should be subtle. Do not create giant animations between every section.
+
+Preserve and improve the existing SEAN cursor system with contextual states such as:
+
+**TURN PAGE → / FOLLOW / SCAN / EXPLORE + / DISCOVER / OPEN +**
+
+Only show cursor labels when useful.
+
+---
+
+## 7. MOTION + PERFORMANCE
+
+Each section should have its own motion personality:
+
+- Storybook = tactile
+- Learning = flowing
+- Guardian = precise/reactive
+- Skills = systemic
+- Beyond Classroom = organic
+
+Avoid repetitive fade-up animations.
+
+**Performance is a hard requirement.**
+
+Prefer `transform` and `opacity`, optimized GSAP timelines, one centralized RAF loop where possible, and IntersectionObserver for activating expensive effects only near the viewport.
+
+Avoid:
+- hundreds of particles
+- excessive blur
+- unnecessary WebGL
+- multiple uncontrolled animation loops
+- DOM measurements every mousemove
+- excessive shadows/filters
+
+Use Three.js only when it genuinely improves the experience. CSS 3D, SVG, Canvas, or layered transforms are preferred when lighter.
+
+Target smooth **~60 FPS** on capable desktops.
+
+Mobile/tablet should use simplified versions of expensive interactions. Respect `prefers-reduced-motion` and preserve keyboard accessibility.
+
+---
+
+## 8. PRESERVE THE EXISTING WEBSITE
+
+Do not destroy working parts of the website.
+
+Preserve:
+- SEAN branding
+- personal information
+- projects/content
+- images/assets
+- working navigation and links
+- responsive behavior
+- accessibility
+- existing functionality that already works well
+
+Do not invent personal information.
+
+---
+
+## FINAL GOAL
+
+The user should feel like they are:
+
+**turning through my identity,  
+lighting my educational journey,  
+entering my digital sanctuary,  
+exploring my technical abilities,  
+and discovering the person behind the screen.**
+
+Every animation must have a purpose.
+
+The final website should feel:
+
+**PREMIUM · CINEMATIC · TACTILE · TECHNICAL · PERSONAL · FAST**
+
+Most importantly:
+
+> Make it impressive without sacrificing smoothness.
+
+## WORKFLOW
+
+**PHASE 1 — AUDIT ONLY:** Inspect the current code, interactions, animation systems, and performance. Propose the best implementation for each requested improvement. **DO NOT CODE YET. Wait for my approval.**
+
+**PHASE 2 — FOUNDATION:** Improve shared motion, cursor, scroll, and performance architecture.
+
+**PHASE 3 — STORYBOOK + LEARNING:** Implement page turning and guiding-light journey.
+
+**PHASE 4 — GUARDIAN + SKILLS:** Rebuild these interactions with strong UI/UX.
+
+**PHASE 5 — BEYOND CLASSROOM:** Implement butterfly, horizon, and Little Things.
+
+**PHASE 6 — FINAL POLISH:** Connect the experience, optimize FPS, fix responsiveness, accessibility, animation conflicts, layout shifts, and console errors.
+
+### CURRENT AUTHORIZATION
+
+**Perform PHASE 1 only. Do not modify files yet. Show me your proposed interaction/implementation plan and wait for approval.**

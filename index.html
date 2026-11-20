@@ -7,6 +7,20 @@
   <meta name='description' content='SEAN - The Digital Me is Sean Jhanz D. Nisperos&#39; single-page portfolio, told as a Filipino-inspired fairytale about learning, creativity, projects, and digital guardianship.'>
   <meta name='theme-color' content='#102820'>
   <link rel='icon' type='image/svg+xml' href='assets/img/hiraya-mark.svg'>
+  <link href="css/intro.css" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        if (location.hash || matchMedia('(prefers-reduced-motion: reduce)').matches || sessionStorage.getItem('sean-intro-seen')) return;
+      } catch { if (location.hash || matchMedia('(prefers-reduced-motion: reduce)').matches) return; }
+      document.documentElement.dataset.seanIntro = 'pending';
+      window.seanIntroFailsafe = setTimeout(() => {
+        if (window.SeanIntro) window.SeanIntro.finish();
+        else delete document.documentElement.dataset.seanIntro;
+      }, 3200);
+    })();
+  </script>
+  <script src="js/intro.js" defer></script>
   <link href="assets/vendor/bootstrap.min.css" rel="stylesheet">
   <link href="css/theme.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
@@ -17,6 +31,21 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+  <div id="seanIntro" class="sean-intro" role="dialog" aria-modal="true" aria-label="SEAN portfolio introduction" hidden>
+    <div class="intro-shutter intro-shutter--top" aria-hidden="true"></div>
+    <div class="intro-shutter intro-shutter--bottom" aria-hidden="true"></div>
+    <div class="intro-topline" aria-hidden="true"><span>SEAN / THE DIGITAL ME</span><span>A STORY STILL UNFOLDING</span></div>
+    <div class="intro-composition">
+      <p class="intro-eyebrow">CURIOUS MIND. THOUGHTFUL CODE.</p>
+      <div class="intro-wordmark" aria-label="Sean"><span aria-hidden="true">S</span><span aria-hidden="true">E</span><span aria-hidden="true">A</span><span aria-hidden="true">N</span><i aria-hidden="true">✳</i></div>
+      <div class="intro-rule" aria-hidden="true"><span></span></div>
+      <div class="intro-chapters" aria-hidden="true"><span>IDENTITY</span><span>LEARNING</span><span>CREATION</span></div>
+      <p class="intro-status" role="status">Opening the story</p>
+    </div>
+    <button type="button" class="intro-skip" id="skipIntro">Skip intro <span aria-hidden="true">↗</span></button>
+    <span class="intro-footnote" aria-hidden="true">CODE. UNDERSTAND. PROTECT.</span>
+  </div>
+
 
   <div id="seanAtmosphere" aria-hidden="true">
     <div class="atmosphere-haze"></div>
@@ -186,10 +215,10 @@
           <span class="village-book-object__pages"></span>
           <span class="village-book-object__cover">S</span>
         </span>
-        <span class="village-book-label">A story waits beneath the trees</span>
+        <span class="village-book-label">Meet the person behind the code</span>
         <span class="village-book-chapter">Continue to Chapter 02 <span aria-hidden="true">→</span></span>
       </a>
-      <p class="village-scroll-cue" aria-hidden="true">A Filipino fairytale, told through technology · Scroll to explore ↓</p>
+      <p class="village-scroll-cue" aria-hidden="true">Identity, learning, and the things I build · Scroll to explore ↓</p>
     </div>
   </section>
 
@@ -880,7 +909,7 @@
           <g class="final-clearing__grass final-clearing__grass--back" fill="none" stroke="#a8ad72" stroke-linecap="round" stroke-width="4">
             <path d="M45 430q-10-51 5-91m92 91q13-57-2-99m188 99q-10-47 4-83m112 83q18-53 2-94m174 94q-12-55 2-96m163 96q17-49 1-88m171 88q-12-58 4-102"/>
           </g>
-          <g class="final-clearing__grass final-clearing__grass--front" fill="none" stroke="#c0ae70" stroke-linecap="round" stroke-width="5">
+          <g class="final-clearing__grass final-clearing__grass--front" fill="none" stroke="#c0ae70" stroke-linecap="round" stroke-width="5">e
             <path d="M105 430q-18-44 0-79m164 79q-16-62 2-105m171 105q-18-48 0-82m188 82q-14-60 5-103m167 103q-17-47 1-80m166 80q-13-55 4-95m150 95q-18-48 0-82"/>
           </g>
         </svg>
@@ -898,7 +927,7 @@
       <div class="final-contact" role="region" aria-labelledby="finalContactTitle">
         <h3 id="finalContactTitle">Leave a note at the forest's edge</h3>
         <div class="final-contact__grid">
-          <div class="final-contact__details">
+          <div class="final-contact__heydetails">
             <a class="final-contact__link" href="mailto:seanjhanz111@gmail.com">
               <span>Email</span><strong>seanjhanz111@gmail.com</strong>
             </a>

@@ -22,49 +22,75 @@
   bookStage.innerHTML = '<div class="book-stage__atmosphere" aria-hidden="true"><span></span><span></span><span></span></div>';
   book.parentNode.insertBefore(bookStage, book);
   bookStage.append(book, nav);
-  const pageFlip = document.createElement('span');
-  pageFlip.className = 'storybook-flip';
+  const pageFlip = document.createElement('div');
+  pageFlip.className = 'storybook-leaf';
   pageFlip.setAttribute('aria-hidden', 'true');
+  pageFlip.inert = true;
+  pageFlip.hidden = true;
   book.querySelector('.storybook-pages').append(pageFlip);
-  const canTilt = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  let current = 0, all = false, turn = null, flip = null;
-  function show(index, animate = true) {
-    const previous = current;
-    current = Math.max(0, Math.min(pages.length - 1, index));
-    turn?.cancel();
-    flip?.cancel();
-    pageFlip.hidden = true;
+  bookStage.dataset.depthSurface = 'book';
+  let current = 0, all = false, busy = false, turn = null;
+  function render() {
     book.classList.toggle('book-all', all);
-    pages.forEach((page, i) => { page.hidden = !all && i !== current; });
+    pages.forEach((page, i) => { page.hidden = !all && i !== current; page.inert = !all && i !== current; });
     nav.hidden = all;
     nav.querySelectorAll('[data-page]').forEach((button, i) => button.setAttribute('aria-current', String(i === current)));
     nav.querySelector('[data-step="-1"]').disabled = current === 0;
     nav.querySelector('[data-step="1"]').disabled = current === pages.length - 1;
-    nav.querySelector('.book-position').textContent = `${current + 1} / ${pages.length}`;
+    nav.querySelector('.book-position').textContent = (current + 1) + ' / ' + pages.length;
     read.textContent = all ? 'Return to page view' : 'Read all pages';
     read.setAttribute('aria-expanded', String(all));
-    status.textContent = all ? 'The complete story is open.' : `Page ${current + 1} of ${pages.length}. Select a bookmark, swipe, or use the arrow keys.${canTilt && !reduced.matches ? ' Move your pointer to tilt the book.' : ''}`;
+    status.textContent = all ? 'The complete story is open.' : 'Page ' + (current + 1) + ' of ' + pages.length + '. Select a bookmark, swipe, or use the arrow keys.';
+  }
+  function finishTurn() {
+    if (!busy) return;
+    busy = false;
+    turn?.cancel(); turn = null;
+    pageFlip.hidden = true;
+    book.classList.remove('is-turning');
+    book.setAttribute('aria-busy', 'false');
+    nav.querySelectorAll('button').forEach(button => button.removeAttribute('aria-disabled'));
+    read.disabled = follow.disabled = false;
+    render();
+  }
+  function show(index, animate = true) {
+    if (busy) return;
+    const previous = current;
+    current = Math.max(0, Math.min(pages.length - 1, index));
+    render();
     if (animate && !all && !reduced.matches && previous !== current) {
+      busy = true;
+      const forward = current > previous;
+      book.dataset.turnDirection = forward ? 'next' : 'previous';
+      book.classList.add('is-turning'); book.setAttribute('aria-busy', 'true');
+      nav.querySelectorAll('button').forEach(button => button.setAttribute('aria-disabled', 'true'));
+      read.disabled = follow.disabled = true;
+      // The outgoing paper carries its actual ink; the destination lies below it.
+      const source = pages[forward ? previous : current];
+      const front = document.createElement('div'); front.className = 'leaf-face leaf-face--front';
+      front.append(source.querySelector('.storybook-page-content').cloneNode(true));
+      const back = document.createElement('div'); back.className = 'leaf-face leaf-face--back';
+      back.innerHTML = '<span class="leaf-watermark">SEAN</span><span class="leaf-verso">THE DIGITAL ME · A STORY STILL UNFOLDING</span>';
+      pageFlip.replaceChildren(front, back);
+      pageFlip.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+      if (!forward) pages.forEach((page, i) => { page.hidden = i !== previous; page.inert = i !== previous; });
       pageFlip.hidden = false;
-      flip = pageFlip.animate([
-        { transform: `rotateY(${current > previous ? 0 : -180}deg)`, opacity: .82 },
-        { transform: `rotateY(${current > previous ? -180 : 0}deg)`, opacity: 0 }
-      ], { duration: 460, easing: 'cubic-bezier(.22,.7,.25,1)' });
-      flip.onfinish = () => { pageFlip.hidden = true; };
-      turn = pages[current].animate([
-        { transform: `rotateY(${current > previous ? -9 : 9}deg)`, opacity: .55 },
-        { transform: 'rotateY(0deg)', opacity: 1 }
-      ], { duration: 460, easing: 'cubic-bezier(.22,.7,.25,1)' });
+      const angles = forward ? [0, -38, -104, -172, -180] : [-180, -142, -76, -8, 0];
+      turn = pageFlip.animate(angles.map((angle, i) => ({
+        transform: 'rotateY(' + angle + 'deg) skewY(' + [0, forward ? -1.5 : 1.5, 0, .3, 0][i] + 'deg)',
+        offset: [0, .28, .62, .9, 1][i]
+      })), { duration: innerWidth < 768 ? 560 : 860, easing: 'cubic-bezier(.32,.05,.2,1)', fill: 'both' });
+      turn.onfinish = finishTurn;
     }
     window.SeanScroll?.refresh();
   }
   nav.addEventListener('click', event => {
     const button = event.target.closest('button');
-    if (button) show(button.hasAttribute('data-page') ? Number(button.dataset.page) : current + Number(button.dataset.step));
+    if (button && !busy) show(button.hasAttribute('data-page') ? Number(button.dataset.page) : current + Number(button.dataset.step));
   });
-  read.addEventListener('click', () => { all = !all; show(current, false); });
+  read.addEventListener('click', () => { if (busy) return; all = !all; show(current, false); });
   follow.textContent = 'Start from page 01';
-  follow.addEventListener('click', () => { all = false; show(0); book.focus({ preventScroll: true }); });
+  follow.addEventListener('click', () => { if (busy) return; all = false; show(0); book.focus({ preventScroll: true }); });
   book.addEventListener('keydown', event => {
     if (all || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
@@ -79,26 +105,9 @@
     swipe = null;
   });
   book.addEventListener('pointercancel', () => { swipe = null; });
-  reduced.addEventListener('change', () => { turn?.cancel(); flip?.cancel(); pageFlip.hidden = true; bookStage.style.removeProperty('--book-tilt-x'); bookStage.style.removeProperty('--book-tilt-y'); });
-  if (canTilt) {
-    let tiltFrame = 0;
-    bookStage.addEventListener('pointermove', event => {
-      if (reduced.matches) return;
-      cancelAnimationFrame(tiltFrame);
-      tiltFrame = requestAnimationFrame(() => {
-        const bounds = book.getBoundingClientRect();
-        const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1));
-        const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1));
-        bookStage.style.setProperty('--book-tilt-x', `${(-y * 2.5).toFixed(2)}deg`);
-        bookStage.style.setProperty('--book-tilt-y', `${(x * 3.5).toFixed(2)}deg`);
-      });
-    }, { passive: true });
-    bookStage.addEventListener('pointerleave', () => {
-      cancelAnimationFrame(tiltFrame);
-      bookStage.style.removeProperty('--book-tilt-x');
-      bookStage.style.removeProperty('--book-tilt-y');
-    });
-  }
+  reduced.addEventListener('change', finishTurn);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) finishTurn(); });
+  window.addEventListener('pagehide', finishTurn);
   show(0, false);
 
   const clearing = document.querySelector('.tree-clearing');

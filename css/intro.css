@@ -1,0 +1,35 @@
+/* A brief typographic curtain, using the portfolio's existing materials. */
+html[data-sean-intro] { overflow:hidden; background:#080f0d; }
+.sean-intro { display:none; }
+html[data-sean-intro] .sean-intro[hidden],html[data-sean-intro] .sean-intro { display:grid !important; }
+.sean-intro { position:fixed; inset:0; z-index:100000; isolation:isolate; place-items:center; color:#e8ecdf; font-family:Arial,sans-serif; }
+.intro-shutter { position:absolute; z-index:-1; left:0; right:0; height:50.2%; background:#080f0d; transition:transform 650ms cubic-bezier(.76,0,.24,1); }
+.intro-shutter--top { top:0; background:radial-gradient(ellipse at 75% 100%,#20372a66,transparent 65%),#080f0d; }
+.intro-shutter--bottom { bottom:0; }
+.intro-topline { position:absolute; top:clamp(1.5rem,4vw,3rem); left:clamp(1.5rem,5vw,5rem); right:clamp(1.5rem,5vw,5rem); display:flex; justify-content:space-between; gap:1rem; padding-bottom:1.2rem; border-bottom:1px solid #aec6962b; font:10px/1.5 monospace; letter-spacing:.15em; color:#a4b79b; }
+.intro-composition { width:min(620px,80vw); padding-bottom:1rem; }
+.intro-eyebrow { margin:0 0 1.5rem; font:10px/1.8 monospace; letter-spacing:.18em; color:#c1b486; }
+.intro-wordmark { display:flex; align-items:baseline; gap:.015em; overflow:hidden; font-size:clamp(5rem,17vw,10.5rem); line-height:1.1; font-weight:800; letter-spacing:-.075em; }
+.intro-wordmark > span { display:block; animation:intro-letter 700ms cubic-bezier(.2,.75,.2,1) both; }
+.intro-wordmark > span:nth-child(2){animation-delay:60ms}.intro-wordmark > span:nth-child(3){animation-delay:120ms}.intro-wordmark > span:nth-child(4){animation-delay:180ms}
+.intro-wordmark i { margin-left:auto; font-size:.35em; color:#b5c797; font-style:normal; animation:intro-symbol 1.2s cubic-bezier(.2,.6,.2,1) both; }
+.intro-rule { height:1px; margin:1.5rem 0 1rem; overflow:hidden; background:#a4ba8d33; }
+.intro-rule span { display:block; height:100%; width:100%; background:#d0c28f; transform-origin:left; animation:intro-trace 1.2s cubic-bezier(.2,.65,.2,1) both; }
+.intro-chapters { display:flex; justify-content:space-between; gap:.5rem; color:#a4b79b; font:9px/1.5 monospace; letter-spacing:.16em; }
+.intro-chapters span { animation:intro-caption .5s ease both; }.intro-chapters span:nth-child(2){animation-delay:.2s}.intro-chapters span:nth-child(3){animation-delay:.4s}
+.intro-status { margin:2rem 0 0; font:11px/1.6 monospace; color:#8ea084; }
+.intro-skip { position:absolute; right:clamp(1.5rem,5vw,5rem); bottom:clamp(1.5rem,4vw,3rem); min-height:44px; padding:.7rem 1rem; border:1px solid #aec69666; border-radius:2px; color:#dae2ca; background:transparent; font:11px monospace; cursor:pointer; }
+.intro-skip:hover,.intro-skip:focus-visible { background:#c7d6aa; color:#102015; outline:2px solid #d3c690; outline-offset:4px; }
+.intro-skip span { margin-left:1.5rem; }
+.intro-footnote { position:absolute; left:clamp(1.5rem,5vw,5rem); bottom:clamp(2.2rem,4.7vw,3.7rem); color:#8ea084; font:9px monospace; letter-spacing:.12em; }
+.intro-composition,.intro-topline,.intro-skip,.intro-footnote { transition:opacity 200ms ease,transform 400ms ease; }
+.sean-intro.is-leaving .intro-shutter--top { transform:translateY(-101%); }.sean-intro.is-leaving .intro-shutter--bottom { transform:translateY(101%); }
+.sean-intro.is-leaving .intro-composition { opacity:0; transform:translateY(-15px); }
+.sean-intro.is-leaving .intro-topline,.sean-intro.is-leaving .intro-skip,.sean-intro.is-leaving .intro-footnote { opacity:0; }
+.sean-intro.is-leaving { pointer-events:none; }
+@keyframes intro-letter { from{transform:translateY(110%) rotate(5deg)}to{transform:none} }
+@keyframes intro-symbol { from{opacity:0;transform:rotate(-100deg) scale(.7)}to{opacity:1;transform:none} }
+@keyframes intro-trace { from{transform:scaleX(0)}to{transform:scaleX(1)} }
+@keyframes intro-caption { from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none} }
+@media(max-width:600px) { .intro-topline span:last-child{display:none}.intro-footnote{font-size:7px;max-width:130px;line-height:1.8}.intro-eyebrow{font-size:8px}.intro-chapters{font-size:8px}.intro-wordmark{font-size:19vw} }
+@media(prefers-reduced-motion:reduce) { .sean-intro { display:none !important; }html[data-sean-intro]{overflow:auto} }
